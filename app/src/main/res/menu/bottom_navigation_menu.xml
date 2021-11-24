@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homePage"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_icon"
+        android:title="Home"/>
+    <item
+        android:id="@+id/appoinmentPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_appoinment_icon"
+        android:title="Appoinments"/>
+    <item
+        android:id="@+id/aboutUsPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_about_us_icon"
+        android:title="About Us"/>
+    <item
+        android:id="@+id/accountPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_account"
+        android:title="Account"/>
+</menu>

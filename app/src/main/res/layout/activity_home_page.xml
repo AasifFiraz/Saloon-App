@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/home_page"
+    tools:context=".Home_Page">
+
+
+    <TextView
+        android:id="@+id/txtWelcomeToText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="117dp"
+        android:fontFamily="@font/rubikmedium"
+        android:text="Welcome To"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/TextSaloonSd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWelcomeToText"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/rubikbold"
+        android:text="SALOON SD"
+        android:textColor="@color/white"
+        android:textSize="40sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMakeAppoinment"
+        android:layout_width="290dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/TextSaloonSd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:fontFamily="@font/robotoblack"
+        android:text="Make an Appoinment"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:cornerRadius="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="7dp"
+        android:drawableStart="@drawable/ic__contact_icon"
+        android:layout_below="@id/btnMakeAppoinment"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/robotobold"
+        android:text="Contact Us"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txtCallUs"
+        android:layout_centerHorizontal="true"
+        android:background="#808080" />
+
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txtMailUs"
+        android:layout_centerHorizontal="true"
+        android:background="#808080" />
+
+    <View
+        android:layout_width="340dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txtOurLocation"
+        android:layout_centerHorizontal="true"
+        android:background="#808080" />
+
+    <TextView
+        android:id="@+id/txtCallUs"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_below="@id/btnMakeAppoinment"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="65dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/ic_outline_call_icon"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/robotomedium"
+        android:paddingLeft="20dp"
+        android:text="Call Us\n"
+        android:textColor="#404040"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/txtMailUs"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txtCallUs"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/ic_outline_mail_icon"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/robotomedium"
+        android:paddingLeft="20dp"
+        android:text="Mail Us\n"
+        android:textColor="#404040"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/txtOurLocation"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txtMailUs"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/ic_outline_location_icon"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/robotomedium"
+        android:paddingLeft="20dp"
+        android:text="Our Location\n"
+        android:textColor="#404040"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/txtOpenHours"
+        android:layout_width="370dp"
+        android:layout_height="300dp"
+        android:layout_below="@id/txtOurLocation"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:fontFamily="@font/robotomedium"
+        android:lineSpacingExtra="10dp"
+        android:paddingLeft="50dp"
+        android:text="Open Hours"
+        android:textColor="#404040"
+        android:textSize="17sp" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            app:itemBackground="@color/yellowish"
+            app:itemIconTint="#2c2c2c"
+            app:itemTextColor="#2c2c2c"
+            app:menu="@menu/bottom_navigation_menu" />
+
+
+</RelativeLayout>
+
+</ScrollView>

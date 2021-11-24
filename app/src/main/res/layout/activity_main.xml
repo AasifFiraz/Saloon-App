@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RlCusLogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="@drawable/background">
+
+            <ImageView
+                android:id="@+id/Logo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/logo" />
+
+            <ImageView
+                android:layout_width="450dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="250dp"
+                android:src="@drawable/ic_wave" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="SALOON SD"
+        android:textColor="#000000"
+        android:textSize="30dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtLoginEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:hint="Email"
+        app:boxCornerRadiusBottomEnd="10pt"
+        app:boxCornerRadiusBottomStart="10pt"
+        app:boxCornerRadiusTopEnd="10pt"
+        app:boxCornerRadiusTopStart="10pt"
+        app:startIconDrawable="@drawable/ic_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EdtLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtLoginPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLoginEmail"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:hint="Password"
+        app:boxCornerRadiusBottomEnd="10pt"
+        app:boxCornerRadiusBottomStart="10pt"
+        app:boxCornerRadiusTopEnd="10pt"
+        app:boxCornerRadiusTopStart="10pt"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:endIconMode="password_toggle"
+        app:endIconTint="#FF9E01"
+        app:errorIconDrawable="@null"
+        app:startIconDrawable="@drawable/ic_password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EdtLoginPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLength="10" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCustomerLogin"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/txtLoginPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="#FED500"
+        android:fontFamily="@font/poppinsbold"
+        android:padding="12dp"
+        android:text="Login"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:cornerRadius="25dp" />
+
+    <TextView
+        android:id="@+id/no_account_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLoginPassword"
+        android:layout_marginLeft="70dp"
+        android:fontFamily="@font/ubunturegular"
+        android:text="Don't Have An Account?"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLoginPassword"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/no_account_msg"
+        android:fontFamily="@font/ubunturegular"
+        android:text="@string/Register"
+        android:textColor="#FFA701"
+        android:textSize="16dp" />
+
+</RelativeLayout>

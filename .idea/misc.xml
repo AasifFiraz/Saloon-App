@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/home_page.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_account.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_password.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave_admin.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave_admin2.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/font/fonts.xml" value="0.23076923076923078" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_admin_login.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_admin_registration.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_customer_registration.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_main_screen.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_register_user.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/custom_alert_dialog.xml" value="0.20416666666666666" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_saloon_sd_location.xml" value="0.20416666666666666" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/saloon_map.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
