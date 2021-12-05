@@ -17,7 +17,7 @@ public class SplahScreen extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(SplahScreen.this,Home_Page.class);
+                Intent intent=new Intent(SplahScreen.this,Appoinment_Booking.class);
                 startActivity(intent);
                 finish();
             }

@@ -11,7 +11,6 @@
     android:background="@drawable/home_page"
     tools:context=".Home_Page">
 
-
     <TextView
         android:id="@+id/txtWelcomeToText"
         android:layout_width="wrap_content"

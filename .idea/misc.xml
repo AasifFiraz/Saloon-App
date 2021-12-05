@@ -5,13 +5,19 @@
       <map>
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/home_page.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_account.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_appoinment_icon.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_password.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave_4.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave_6.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave_admin.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave_admin2.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_wave_appoinment_booking.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/services.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/font/fonts.xml" value="0.23076923076923078" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_admin_login.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_admin_registration.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appoinment_booking.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_customer_registration.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_main.xml" value="0.25" />

@@ -52,7 +52,7 @@ public class Home_Page extends AppCompatActivity {
                         Toast.makeText(Home_Page.this, "About Us", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.accountPage:
-                        Toast.makeText(Home_Page.this, "Accoount", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Home_Page.this, "Account", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
