@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Appoinment_Booking"
+    android:background="#f7f7f7">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#F7BF50">
+
+
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="#2c2c2c"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:fontFamily="@font/poppinsbold"-->
+<!--            android:textSize="20sp"-->
+<!--            android:drawableStart="@drawable/ic_date_time_icon"-->
+<!--            android:text="Date And Time"/>-->
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtSelectServiceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Service"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_marginTop="6dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:drawableStart="@drawable/ic_service_icon"
+        android:textColor="#2c2c2c" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="20sp"
+        android:paddingRight="100dp"
+        android:paddingStart="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/services"
+        android:layout_below="@+id/txtSelectServiceText"
+        android:layout_centerHorizontal="true"
+        android:text="Hair Cut"
+        />
+
+</RelativeLayout>
