@@ -16,6 +16,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class Home_Page extends AppCompatActivity {
     private TextView txtcallUs, txtmailUs, txtOurLocation, txtOpenHours;
+    private Button btnMakeAppoinment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,16 @@ public class Home_Page extends AppCompatActivity {
         txtmailUs = findViewById(R.id.txtMailUs);
         txtOurLocation = findViewById(R.id.txtOurLocation);
         txtOpenHours = findViewById(R.id.txtOpenHours);
+        btnMakeAppoinment = findViewById(R.id.btnMakeAppoinment);
+
+        btnMakeAppoinment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Home_Page.this,Appoinment_Booking.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
