@@ -98,7 +98,7 @@ public class Admin_Registration extends AppCompatActivity {
                                 }
                             }).show();
                         } else {
-                            admins = new Admins(EdtRegName.getText().toString(),
+                            admins = new Admins(null,EdtRegName.getText().toString(),
                                     EdtRegEmail.getText().toString(), EdtRegPassword.getText().toString());
 
                             //Creates the User

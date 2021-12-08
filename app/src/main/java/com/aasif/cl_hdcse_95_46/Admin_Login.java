@@ -39,7 +39,6 @@ public class Admin_Login extends AppCompatActivity {
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#F7BF50\">" + getString(R.string.app_name) + "</font>"));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F7BF50")));
 
-        // Assigning Text_input vairables to their id
         txtLoginEmail = findViewById(R.id.txtAdminLoginEmail);
         txtLoginPassword = findViewById(R.id.txtAdminLoginPassword);
         EdtLoginEmail = findViewById(R.id.EdtAdminLoginEmail);

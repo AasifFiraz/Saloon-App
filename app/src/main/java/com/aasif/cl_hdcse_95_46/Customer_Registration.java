@@ -100,26 +100,26 @@ public class Customer_Registration extends AppCompatActivity {
                                 }
                             }).show();
                         } else {
-                            customers = new Customers(EdtRegName.getText().toString(),
+                            customers = new Customers(null,EdtRegName.getText().toString(),
                                     EdtRegEmail.getText().toString(), EdtRegPassword.getText().toString());
 
                             //Creates the User
                             dbcon.createCustomer(customers);
-                            Snackbar.make(RlRegisterUser, "Successfully Created User",
-                                    BaseTransientBottomBar.LENGTH_LONG).setAction("Close", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-
-                                }
-                            }).show();
 
                             Intent i = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(i);
 
                         }
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "Error occured when creating user", Toast.LENGTH_SHORT).show();
-                    }
+                        Snackbar.make(RlRegisterUser, "Error Occurred when registering the user\nPlease try again later.", Snackbar.LENGTH_LONG)
+                                .setAction("CLOSE", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                    }
+                                })
+                                .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
+                                .show();                      }
                 }
 
             }

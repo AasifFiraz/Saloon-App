@@ -22,9 +22,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Appoinment_Booking extends AppCompatActivity {
-    private TextView txtSelectedDate, txtSelectedTime, txtSelectedDuration, TextDate, TextTime;
+    private TextView txtSelectedDate, txtSelectedTime, txtSelectedDuration, TextDate, TextTime, TextPrice;
     private Button btnSelectedDate, btnBookAppoinment, btnSelectedTime;
     private CheckBox serviceCheckBox;
+    private DBConnector dbcon;
     private RelativeLayout RlAppoinment;
 
     @Override
@@ -40,6 +41,7 @@ public class Appoinment_Booking extends AppCompatActivity {
         btnSelectedTime = findViewById(R.id.btnSelectTime);
         btnBookAppoinment = findViewById(R.id.btnBookAppoinment);
         TextDate = findViewById(R.id.TextDate);
+        TextPrice = findViewById(R.id.TotalPriceText);
         serviceCheckBox = findViewById(R.id.serviceCheckBox);
         TextTime = findViewById(R.id.TextTime);
         RlAppoinment = findViewById(R.id.RlAppoinmentBooking);
@@ -104,7 +106,8 @@ public class Appoinment_Booking extends AppCompatActivity {
                                             }
                                         })
                                         .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
-                                        .show();                               }
+                                        .show();
+                            }
                             else if (hourOfDay >= 9 ) {
                                 int hour = hourOfDay % 12;
                                 txtSelectedTime.setText(String.format("%02d:%02d %s", hour == 0 ? 12 : hour,
@@ -115,14 +118,36 @@ public class Appoinment_Booking extends AppCompatActivity {
 
                                serviceCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                    @Override
-                                   public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                                   public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
 
-                                       if(b){
+
+
+                                       if(isChecked){
                                            btnBookAppoinment.setBackgroundColor(Color.parseColor("#F7BF50"));
                                            btnBookAppoinment.setEnabled(true);
+                                           TextPrice.setVisibility(View.VISIBLE);
+
+                                           btnBookAppoinment.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View view) {
+                                                   Appoinment appoinment;
+                                                   dbcon = new DBConnector(Appoinment_Booking.this);
+                                                   
+                                                   appoinment = new Appoinment(null,"a",txtSelectedDate.getText().toString(),
+                                                           txtSelectedTime.getText().toString(),TextPrice.getText().toString());
+
+                                                   dbcon.addAppointment(appoinment);
+
+                                                   Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                                               }
+                                           });
+
+
+
                                        }else{
                                            btnBookAppoinment.setBackgroundColor(Color.parseColor("#cccccc"));
                                            btnBookAppoinment.setEnabled(false);
+                                           TextPrice.setVisibility(View.INVISIBLE);
                                        }
                                    }
                                });
@@ -148,6 +173,6 @@ public class Appoinment_Booking extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
+        super.onBackPressed();
     }
 }

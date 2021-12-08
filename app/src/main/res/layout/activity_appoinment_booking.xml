@@ -176,6 +176,20 @@
         android:textColor="#2c2c2c"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/TotalPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSelectedDuration"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Total Price - Rs.800"
+        android:layout_marginTop="10dp"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp"
+        android:visibility="invisible" />
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBookAppoinment"
         android:layout_width="300dp"

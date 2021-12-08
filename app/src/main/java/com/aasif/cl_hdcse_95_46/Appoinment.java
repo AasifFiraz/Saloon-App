@@ -1,37 +1,57 @@
 package com.aasif.cl_hdcse_95_46;
 
 public class Appoinment {
-    private String serviceName;
-    private int date;
-    private int time;
+    private String id;
+    private String name;
+    private String date;
+    private String time;
+    private String price;
 
-    public Appoinment(String serviceName, int date, int time) {
-        this.serviceName = serviceName;
+    public Appoinment(String id, String name, String date, String time, String price) {
+        this.id = id;
+        this.name = name;
         this.date = date;
         this.time = time;
+        this.price = price;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getId() {
+        return id;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getDate() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

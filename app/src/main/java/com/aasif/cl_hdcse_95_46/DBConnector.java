@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DBConnector extends SQLiteOpenHelper {
 
     Context con;
@@ -18,8 +22,9 @@ public class DBConnector extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table customers (name text primary key, email text, password text)");
-        db.execSQL("create table admins (name text primary key, email text, password text)");
+        db.execSQL("create table customers (id INTEGER PRIMARY KEY, name text, email text, password text)");
+        db.execSQL("create table admins (id INTEGER PRIMARY KEY, name text, email text, password text)");
+        db.execSQL("create table appointments (id INTEGER PRIMARY KEY, name text, date text, time text, price text)");
     }
 
     @Override
@@ -108,5 +113,24 @@ public class DBConnector extends SQLiteOpenHelper {
         }else {
             return false;
         }
+    }
+
+
+    public boolean addAppointment(Appoinment appoinment){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("name", appoinment.getName());
+        cv.put("date", appoinment.getDate());
+        cv.put("time", appoinment.getTime());
+        cv.put("price", appoinment.getPrice());
+
+        long insert = db.insert("appointments",null,cv);
+
+         if (insert == -1) {
+            return false;
+          }else {
+             return true;
+         }
     }
 }
