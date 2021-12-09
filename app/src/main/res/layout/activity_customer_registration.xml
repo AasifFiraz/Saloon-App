@@ -15,7 +15,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="@drawable/background">
+            android:background="#F7BF50">
 
             <ImageView
                 android:id="@+id/Logo"

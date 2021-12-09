@@ -1,9 +1,11 @@
 package com.aasif.cl_hdcse_95_46;
 
+import android.accounts.Account;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.app.Fragment;
 
 public class SplahScreen extends Activity {
 
@@ -24,4 +26,5 @@ public class SplahScreen extends Activity {
         },3000);
 
     }
+
 }

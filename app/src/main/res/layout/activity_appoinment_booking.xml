@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#f7f7f7"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<RelativeLayout
     android:id="@+id/RlAppoinmentBooking"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7f7f7"
     tools:context=".Appoinment_Booking">
 
 
@@ -13,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#F7BF50">
-
     </FrameLayout>
 
     <TextView
@@ -106,6 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnSelectTime"
         android:layout_marginLeft="30dp"
+        android:visibility="invisible"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/poppinsbold"
         android:text="Review and Confirm"
@@ -120,10 +124,9 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/ubunturegular"
-        android:text="Date  -"
+        android:text=""
         android:textColor="#2c2c2c"
-        android:textSize="20sp"
-        android:visibility="invisible" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/TextTime"
@@ -133,10 +136,9 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/ubunturegular"
-        android:text="Time  -"
+        android:text=""
         android:textColor="#2c2c2c"
-        android:textSize="20sp"
-        android:visibility="invisible" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/txtSelectedDate"
@@ -147,8 +149,8 @@
         android:layout_marginTop="40dp"
         android:layout_toRightOf="@+id/TextDate"
         android:fontFamily="@font/ubunturegular"
-        android:text=""
-        android:textColor="#2c2c2c"
+        android:text="date"
+        android:textColor="#f7f7f7"
         android:textSize="20sp" />
 
     <TextView
@@ -160,8 +162,8 @@
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@id/TextTime"
         android:fontFamily="@font/ubunturegular"
-        android:text=""
-        android:textColor="#2c2c2c"
+        android:text="time"
+        android:textColor="#f7f7f7"
         android:textSize="20sp" />
 
     <TextView
@@ -208,3 +210,4 @@
         app:iconTint="#2c2c2c" />
 
 </RelativeLayout>
+</ScrollView>

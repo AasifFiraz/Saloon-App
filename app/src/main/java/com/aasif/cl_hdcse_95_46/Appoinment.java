@@ -4,14 +4,12 @@ public class Appoinment {
     private String id;
     private String name;
     private String date;
-    private String time;
     private String price;
 
-    public Appoinment(String id, String name, String date, String time, String price) {
+    public Appoinment(String id, String name, String date, String price) {
         this.id = id;
         this.name = name;
         this.date = date;
-        this.time = time;
         this.price = price;
     }
 
@@ -37,14 +35,6 @@ public class Appoinment {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getPrice() {

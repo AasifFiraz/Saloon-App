@@ -3,6 +3,8 @@ package com.aasif.cl_hdcse_95_46;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -49,27 +51,35 @@ public class Home_Page extends AppCompatActivity {
             }
         });
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.homePage:
-                        Toast.makeText(Home_Page.this, "Home", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.appoinmentPage:
-                        Toast.makeText(Home_Page.this, "Appointment", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.aboutUsPage:
-                        Toast.makeText(Home_Page.this, "About Us", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.accountPage:
-                        Toast.makeText(Home_Page.this, "Account", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-                return true;
-            }
-        });
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        Fragment selectedFragment = null;
+                        switch (item.getItemId()) {
+                            case R.id.homePage:
+                                Intent intent=new Intent(Home_Page.this,Appoinment_Booking.class);
+                                startActivity(intent);
+                                finish();
+                                break;
+                            case R.id.appoinmentPage:
+                                Toast.makeText(getApplicationContext(), "a", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.aboutUsPage:
+                                Toast.makeText(Home_Page.this, "a", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.accountPage:
+                                Toast.makeText(Home_Page.this, "a", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+//                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                        transaction.replace(R.id.frameLayout, selectedFragment);
+//                        transaction.commit();
+                        return true;
+                    }
+                });
 
         txtcallUs.setOnClickListener(new View.OnClickListener() {
 

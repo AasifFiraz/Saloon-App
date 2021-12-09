@@ -90,34 +90,38 @@ public class Admin_Registration extends AppCompatActivity {
                         Boolean checkDuplicateAdminName = dbcon.checkDuplicateAdminName(name);
 
                         if (checkDuplicateAdminName == true) {
-                            Snackbar.make(RlRegisterAdmin, "Admin Name Already Exists !\nCreate new Account with different email if you don't have one"
-                                    , BaseTransientBottomBar.LENGTH_LONG).setAction("Close", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
+                            Snackbar.make(RlRegisterAdmin, "Admin Email Already Exists !\nCreate new Account with different email if you don't have one.", Snackbar.LENGTH_LONG)
+                                    .setAction("CLOSE", new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
 
-                                }
-                            }).show();
+                                        }
+                                    })
+                                    .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
+                                    .show();
                         } else {
+
+
                             admins = new Admins(null,EdtRegName.getText().toString(),
                                     EdtRegEmail.getText().toString(), EdtRegPassword.getText().toString());
 
                             //Creates the User
                             dbcon.createAdmins(admins);
-                            Snackbar.make(RlRegisterAdmin, "Successfully Created User",
-                                    BaseTransientBottomBar.LENGTH_LONG).setAction("Close", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-
-                                }
-                            }).show();
 
                             Intent i = new Intent(getApplicationContext(), Admin_Login.class);
                             startActivity(i);
 
                         }
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "Error occured when creating user", Toast.LENGTH_SHORT).show();
-                    }
+                        Snackbar.make(RlRegisterAdmin, "Error Occurred when registering new admin\nPlease try again later.", Snackbar.LENGTH_LONG)
+                                .setAction("CLOSE", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                    }
+                                })
+                                .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
+                                .show();                       }
                 }
 
             }

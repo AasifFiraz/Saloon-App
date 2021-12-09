@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtBookedName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aasif Nawaz"
+            android:layout_marginTop="10dp"
+            android:textColor="#2c2c2c"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/TextBookedService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#2c2c2c"
+            android:layout_marginTop="5dp"
+            android:text="Appointment for Haircut"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtBookedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#2c2c2c"
+            android:text="September 11th 2021"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/asadawsd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#2c2c2c"
+            android:text="\@"
+            android:layout_marginTop="50dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtBookedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="#2c2c2c"
+            android:text="13.20 pm"
+            android:layout_marginTop="50dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtBookedPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs.\n800"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/yellowish"
+            android:textSize="35sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
