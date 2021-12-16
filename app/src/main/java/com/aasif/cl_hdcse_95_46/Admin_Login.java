@@ -81,8 +81,8 @@ public class Admin_Login extends AppCompatActivity {
 
                     if(checkAdminCredentials == true){
                         Toast.makeText(getApplicationContext(), "Login Successful !", Toast.LENGTH_LONG).show();
-//                        Intent MainScreen = new Intent(getApplicationContext(), MainActivity.class);
-//                        startActivity(MainScreen);
+                        Intent MainScreen = new Intent(getApplicationContext(), AdminAppointments.class);
+                        startActivity(MainScreen);
                     }else{
                         Toast.makeText(getApplicationContext(), "Incorrect Username or Password !", Toast.LENGTH_LONG).show();
                     }

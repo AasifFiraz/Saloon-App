@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CLHDCSE9546">
         <activity
+            android:name=".AdminAppointments"
+            android:exported="false" />
+        <activity
             android:name=".MainPage"
             android:exported="false" />
         <activity

@@ -41,7 +41,7 @@ public class AppointmentFragment extends Fragment {
         TextView txtNoAppointment = view.findViewById(R.id.txtNoAppointmentMessage);
 
         DBConnector dbcon = new DBConnector(getActivity());
-        ArrayList<HashMap<String, String>> userList = dbcon.GetAppointments();
+        ArrayList<HashMap<String, String>> userList = dbcon.GetAppointmentsForCustomer();
 
         ListAdapter adapter = new SimpleAdapter(getActivity(), userList, R.layout.appointments_list,
                 new String[]{"name","date","time","price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate,

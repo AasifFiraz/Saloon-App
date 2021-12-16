@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,38 +37,38 @@ public class DBConnector extends SQLiteOpenHelper {
 
     }
 
-    public  boolean createCustomer(Customers customers){
-
-    SQLiteDatabase db = this.getWritableDatabase();
-
-    ContentValues cv = new ContentValues();
-    cv.put("name", customers.getName());
-    cv.put("email",customers.getEmail());
-    cv.put("password", customers.getPassword());
-
-    long insert = db.insert("customers", null, cv);
-
-    if(insert == -1){
-        return false;
-    }else{
-        return true;
-    }
-    }
-
-    public boolean checkDuplicateCustomerEmail(String email){
+    public boolean createCustomer(Customers customers) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("select * from customers where email = ?",new String[]{email});
+        ContentValues cv = new ContentValues();
+        cv.put("name", customers.getName());
+        cv.put("email", customers.getEmail());
+        cv.put("password", customers.getPassword());
 
-        if(cursor.getCount()>0){
+        long insert = db.insert("customers", null, cv);
+
+        if (insert == -1) {
+            return false;
+        } else {
             return true;
-        }else {
+        }
+    }
+
+    public boolean checkDuplicateCustomerEmail(String email) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("select * from customers where email = ?", new String[]{email});
+
+        if (cursor.getCount() > 0) {
+            return true;
+        } else {
             return false;
         }
     }
 
-    public boolean createAdmins(Admins admins){
+    public boolean createAdmins(Admins admins) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -76,7 +77,7 @@ public class DBConnector extends SQLiteOpenHelper {
         cv.put("email", admins.getEmail());
         cv.put("password", admins.getPassword());
 
-        long insert = db.insert("admins",null, cv);
+        long insert = db.insert("admins", null, cv);
 
         if (insert == -1) {
             return false;
@@ -84,23 +85,23 @@ public class DBConnector extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean checkDuplicateAdminName(String name){
+    public boolean checkDuplicateAdminName(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor =db.rawQuery("select * from admins where name = ?",new String[]{name});
+        Cursor cursor = db.rawQuery("select * from admins where name = ?", new String[]{name});
 
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public Boolean checkCustomerCredentials(String email, String pass){
+    public Boolean checkCustomerCredentials(String email, String pass) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("select user_id from customers where email = ? AND password = ?",
-                new String[]{email,pass});
-        if(cursor.getCount()>0){
+                new String[]{email, pass});
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             int user_id = cursor.getInt(0);
             System.out.println(user_id);
@@ -113,26 +114,24 @@ public class DBConnector extends SQLiteOpenHelper {
 
             return true;
 
-        }else {
+        } else {
             return false;
         }
     }
 
-    public void saveData() {
 
-    }
-
-    public Boolean checkAdminCredentials(String email, String pass){
+    public Boolean checkAdminCredentials(String email, String pass) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("select * from admins where email = ? AND password = ?",
-                new String[]{email,pass});
-        if(cursor.getCount()>0){
+                new String[]{email, pass});
+        if (cursor.getCount() > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
+
 
     public Boolean history(String startdate, String enddate) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -141,14 +140,14 @@ public class DBConnector extends SQLiteOpenHelper {
                 " BETWEEN ? AND ?", new String[]{startdate, enddate});
 
 
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public boolean addAppointment(Appoinment appoinment){
+    public boolean addAppointment(Appoinment appoinment) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
@@ -157,29 +156,68 @@ public class DBConnector extends SQLiteOpenHelper {
         cv.put("date", appoinment.getDate());
         cv.put("price", appoinment.getPrice());
         cv.put("user_id", sharedPreferences.getInt("username key", 0));
-        long insert = db.insert("appointments",null,cv);
+        long insert = db.insert("appointments", null, cv);
 
-         if (insert == -1) {
+        if (insert == -1) {
             return false;
-          }else {
-             return true;
-         }
+        } else {
+            return true;
+        }
     }
 
+    public String getAppoinmentCustomerName() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String appoinName;
+        SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
+        String query = "SELECT name FROM customers WHERE user_id=" + sharedPreferences.getInt("username key", 0);
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                appoinName = cursor.getString(0);
+                return appoinName;
+            } while (cursor.moveToNext());
+
+        }else{
+
+        }
+        return appoinName="";
+    }
+
+
     @SuppressLint("Range")
-    public ArrayList<HashMap<String, String>> GetAppointments(){
+    public ArrayList<HashMap<String, String>> GetAppointmentsForCustomer() {
         SQLiteDatabase db = this.getWritableDatabase();
         SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
         ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
-        String query = "SELECT name, date, price FROM appointments WHERE user_id="+sharedPreferences.getInt("username key", 0);
-        Cursor cursor = db.rawQuery(query,null);
-        while (cursor.moveToNext()){
-            HashMap<String,String> appointments = new HashMap<>();
-            appointments.put("name",cursor.getString(cursor.getColumnIndex("name")));
-            appointments.put("date",cursor.getString(cursor.getColumnIndex("date")));
-            appointments.put("price",cursor.getString(cursor.getColumnIndex("price")));
+        String query = "SELECT name, date, price FROM appointments WHERE user_id=" + sharedPreferences.getInt("username key", 0);
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            HashMap<String, String> appointments = new HashMap<>();
+            appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
+            appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
+            appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
             appointmentList.add(appointments);
         }
-        return  appointmentList;
+        return appointmentList;
     }
+
+    @SuppressLint("Range")
+    public ArrayList<HashMap<String, String>> GetAllAppointments() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
+        String query = "SELECT name, date, price FROM appointments";
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            HashMap<String, String> appointments = new HashMap<>();
+            appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
+            appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
+            appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
+            appointmentList.add(appointments);
+        }
+        return appointmentList;
+    }
+
 }
