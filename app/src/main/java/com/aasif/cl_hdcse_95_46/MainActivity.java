@@ -83,9 +83,8 @@ public class MainActivity extends AppCompatActivity {
                     if(checkUsernamePass == true){
                         Toast.makeText(getApplicationContext(), "Login Successful !", Toast.LENGTH_LONG).show();
 
-//                        getSupportFragmentManager().beginTransaction().add(R.id.main_container,
-//                                new HomeFragment()).commit();
-                        Intent MainScreen = new Intent(getApplicationContext(), Home_Page.class);
+
+                        Intent MainScreen = new Intent(getApplicationContext(), MainPage.class);
                         startActivity(MainScreen);
                     }else{
                         Toast.makeText(getApplicationContext(), "Incorrect Username or Password !", Toast.LENGTH_LONG).show();

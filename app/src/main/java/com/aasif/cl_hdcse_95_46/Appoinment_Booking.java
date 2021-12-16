@@ -7,7 +7,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -170,10 +168,10 @@ public class Appoinment_Booking extends AppCompatActivity {
                                                     dbcon.addAppointment(appoinment);
                                                     Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_SHORT).show();
 
-
-                                                   Intent intent=new Intent(Appoinment_Booking.this,Appointments_List.class);
+                                                   Intent intent=new Intent(Appoinment_Booking.this, List_Page.class);
                                                    startActivity(intent);
                                                    finish();
+
                                                 }
                                             }
 

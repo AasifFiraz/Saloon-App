@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/home_page"
-    tools:context=".Home_Page">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txtWelcomeToText"
@@ -32,6 +32,7 @@
         android:text="SALOON SD"
         android:textColor="@color/white"
         android:textSize="40sp" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnMakeAppoinment"
@@ -134,7 +135,7 @@
 
     <TextView
         android:id="@+id/txtOpenHours"
-        android:layout_width="370dp"
+        android:layout_width="371dp"
         android:layout_height="300dp"
         android:layout_below="@id/txtOurLocation"
         android:layout_marginLeft="20dp"
@@ -147,18 +148,5 @@
         android:textColor="#404040"
         android:textSize="17sp" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
-            android:layout_width="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content"
-            app:itemBackground="@color/yellowish"
-            app:itemIconTint="#2c2c2c"
-            app:itemTextColor="#2c2c2c"
-            app:menu="@menu/bottom_navigation_menu" />
-
-
 </RelativeLayout>
-
 </ScrollView>

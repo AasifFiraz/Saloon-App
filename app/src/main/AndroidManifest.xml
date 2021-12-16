@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CLHDCSE9546">
         <activity
-            android:name=".Appointments_List"
+            android:name=".MainPage"
             android:exported="false" />
         <activity
             android:name=".Appoinment_Booking"
             android:exported="false" />
         <activity
-            android:name=".Home_Page"
+            android:name=".List_Page"
             android:exported="false" />
         <activity
             android:name=".Admin_Login"
