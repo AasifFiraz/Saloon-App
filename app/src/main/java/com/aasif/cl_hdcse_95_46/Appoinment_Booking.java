@@ -25,7 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Appoinment_Booking extends AppCompatActivity {
-    private TextView txtSelectedDate, txtSelectedTime, txtSelectedDuration, TextDate, TextTime, TextPrice, TextConfirm;
+    private TextView txtSelectedDate, txtSelectedTime, txtSelectedDuration, TextDate, TextTime, TextPrice, TextConfirm, txtAppName;
     private Button btnSelectedDate, btnBookAppoinment, btnSelectedTime;
     private CheckBox serviceCheckBox;
     private DBConnector dbcon;
@@ -42,6 +42,7 @@ public class Appoinment_Booking extends AppCompatActivity {
         txtSelectedDuration = findViewById(R.id.txtSelectedDuration);
         btnSelectedDate = findViewById(R.id.btnSelectDate);
         btnSelectedTime = findViewById(R.id.btnSelectTime);
+        txtAppName = findViewById(R.id.txtappoinmentPersonName);
         btnBookAppoinment = findViewById(R.id.btnBookAppoinment);
         TextDate = findViewById(R.id.TextDate);
         TextPrice = findViewById(R.id.TotalPriceText);
@@ -55,7 +56,10 @@ public class Appoinment_Booking extends AppCompatActivity {
 
         btnBookAppoinment.setBackgroundColor(Color.parseColor("#cccccc"));
         btnBookAppoinment.setEnabled(false);
+        dbcon = new DBConnector(this);
 
+        String appoinName = dbcon.getAppoinmentCustomerName();
+        txtAppName.setText(appoinName);
 
         btnSelectedDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,11 +155,11 @@ public class Appoinment_Booking extends AppCompatActivity {
                                                 cal.setTime(d);
                                                 cal.add(Calendar.MINUTE, 10);
                                                 String newTime = df.format(cal.getTime());
-                                                String newDateTime = txtSelectedDate.getText().toString() +" "+ newTime;
+                                                String newDateTime = txtSelectedDate.getText().toString() + " " + newTime;
                                                 Appoinment appoinment;
                                                 dbcon = new DBConnector(Appoinment_Booking.this);
 
-                                                appoinment = new Appoinment(null, "a", txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString(), "Rs.800");
+                                                appoinment = new Appoinment(null, txtAppName.getText().toString(), txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString(), "Rs.800");
 
 
                                                 System.out.println(txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString());
@@ -168,10 +172,9 @@ public class Appoinment_Booking extends AppCompatActivity {
                                                     dbcon.addAppointment(appoinment);
                                                     Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_SHORT).show();
 
-                                                   Intent intent=new Intent(Appoinment_Booking.this, List_Page.class);
-                                                   startActivity(intent);
-                                                   finish();
-
+                                                    Intent intent = new Intent(Appoinment_Booking.this, List_Page.class);
+                                                    startActivity(intent);
+                                                    finish();
                                                 }
                                             }
 

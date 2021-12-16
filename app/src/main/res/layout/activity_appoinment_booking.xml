@@ -6,208 +6,213 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<RelativeLayout
-    android:id="@+id/RlAppoinmentBooking"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Appoinment_Booking">
-
-
-    <FrameLayout
+    <RelativeLayout
+        android:id="@+id/RlAppoinmentBooking"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#F7BF50">
-    </FrameLayout>
+        android:layout_height="match_parent"
+        tools:context=".Appoinment_Booking">
 
-    <TextView
-        android:id="@+id/txtSelectServiceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="6dp"
-        android:drawableStart="@drawable/ic_service_icon"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="Select Service"
-        android:textColor="#2c2c2c"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/txtappoinmentPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/yellowish"/>
 
-    <CheckBox
-        android:id="@+id/serviceCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSelectServiceText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/services"
-        android:fontFamily="@font/poppinsmedium"
-        android:paddingStart="100dp"
-        android:paddingTop="10dp"
-        android:paddingRight="100dp"
-        android:paddingBottom="10dp"
-        android:text="Hair Cut"
-        android:textColor="#000"
-        android:textSize="20sp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#F7BF50">
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/DateandTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+            android:drawableStart="@drawable/ic_date_time_icon"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Date and Time"
+            android:textColor="#2c2c2c"
+            android:textSize="20sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectDate"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/DateandTimeText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#F7BF50"
+            android:fontFamily="@font/poppinsbold"
+            android:padding="12dp"
+            android:text="Select Date"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:cornerRadius="5dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectTime"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/btnSelectDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#F7BF50"
+            android:fontFamily="@font/poppinsbold"
+            android:padding="12dp"
+            android:text="Select Time"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:cornerRadius="5dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/btnSelectTime"
+            android:layout_marginTop="50dp"
+            android:background="#F7BF50">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/SelectServiceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnSelectTime"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="57dp"
+            android:drawableStart="@drawable/ic_service_icon"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Select Service"
+            android:textColor="#2c2c2c"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/serviceCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SelectServiceText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/services"
+            android:fontFamily="@font/poppinsmedium"
+            android:paddingStart="100dp"
+            android:paddingTop="10dp"
+            android:paddingRight="100dp"
+            android:paddingBottom="10dp"
+            android:text="Hair Cut"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/TextReviewandconfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/serviceCheckBox"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Review and Confirm"
+            android:textColor="#F7BF50"
+            android:textSize="18sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/TextDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/TextReviewandconfirm"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/ubunturegular"
+            android:text=""
+            android:textColor="#2c2c2c"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/TextTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/TextDate"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/ubunturegular"
+            android:text=""
+            android:textColor="#2c2c2c"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtSelectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TextReviewandconfirm"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@+id/TextDate"
+            android:fontFamily="@font/ubunturegular"
+            android:text="date"
+            android:textColor="#f7f7f7"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtSelectedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtSelectedDate"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/TextTime"
+            android:fontFamily="@font/ubunturegular"
+            android:text="time"
+            android:textColor="#f7f7f7"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtSelectedDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtSelectedTime"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/ubunturegular"
+            android:text=""
+            android:textColor="#2c2c2c"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/TotalPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtSelectedDuration"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Total Price - Rs.800"
+            android:layout_marginTop="10dp"
+            android:textColor="#2c2c2c"
+            android:textSize="18sp"
+            android:visibility="invisible" />
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/serviceCheckBox"
-        android:layout_marginTop="50dp"
-        android:background="#F7BF50">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBookAppoinment"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/txtSelectedDuration"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#F7BF50"
+            android:fontFamily="@font/robotoblack"
+            android:text="Book Appoinment"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:cornerRadius="35dp"
+            app:icon="@drawable/ic_book_appoinment_icon"
+            app:iconGravity="start"
+            app:iconTint="#2c2c2c" />
 
-    </FrameLayout>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/DateandTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/serviceCheckBox"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="57dp"
-        android:drawableStart="@drawable/ic_date_time_icon"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="Date and Time"
-        android:textColor="#2c2c2c"
-        android:textSize="20sp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSelectDate"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/DateandTimeText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#F7BF50"
-        android:fontFamily="@font/poppinsbold"
-        android:padding="12dp"
-        android:text="Select Date"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:cornerRadius="5dp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSelectTime"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/btnSelectDate"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#F7BF50"
-        android:fontFamily="@font/poppinsbold"
-        android:padding="12dp"
-        android:text="Select Time"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:cornerRadius="5dp" />
-
-    <TextView
-        android:id="@+id/TextReviewandconfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnSelectTime"
-        android:layout_marginLeft="30dp"
-        android:visibility="invisible"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="Review and Confirm"
-        android:textColor="#F7BF50"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/TextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/TextReviewandconfirm"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/ubunturegular"
-        android:text=""
-        android:textColor="#2c2c2c"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/TextTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/TextDate"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/ubunturegular"
-        android:text=""
-        android:textColor="#2c2c2c"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/txtSelectedDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextReviewandconfirm"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="40dp"
-        android:layout_toRightOf="@+id/TextDate"
-        android:fontFamily="@font/ubunturegular"
-        android:text="date"
-        android:textColor="#f7f7f7"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/txtSelectedTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSelectedDate"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_toRightOf="@id/TextTime"
-        android:fontFamily="@font/ubunturegular"
-        android:text="time"
-        android:textColor="#f7f7f7"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/txtSelectedDuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSelectedTime"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/ubunturegular"
-        android:text=""
-        android:textColor="#2c2c2c"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/TotalPriceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSelectedDuration"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="Total Price - Rs.800"
-        android:layout_marginTop="10dp"
-        android:textColor="#2c2c2c"
-        android:textSize="18sp"
-        android:visibility="invisible" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBookAppoinment"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/txtSelectedDuration"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#F7BF50"
-        android:fontFamily="@font/robotoblack"
-        android:text="Book Appoinment"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        app:cornerRadius="35dp"
-        app:icon="@drawable/ic_book_appoinment_icon"
-        app:iconGravity="start"
-        app:iconTint="#2c2c2c" />
-
-</RelativeLayout>
 </ScrollView>
