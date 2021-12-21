@@ -38,7 +38,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:textColor="#2c2c2c"
-            android:text="September 11th 2021"
+            android:text="10/12/2021"
             android:textSize="18sp" />
 
 
@@ -49,24 +49,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/asadawsd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#2c2c2c"
-            android:text="\@"
-            android:layout_marginTop="50dp"
-            android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/txtBookedTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textColor="#2c2c2c"
-            android:text="13.20 pm"
-            android:layout_marginTop="50dp"
-            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtBookedPrice"
@@ -74,7 +57,7 @@
             android:layout_height="wrap_content"
             android:text="Rs.\n800"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:textColor="@color/yellowish"
             android:textSize="35sp" />
 
