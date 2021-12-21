@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Appoinment_Booking extends AppCompatActivity {
-    private TextView txtSelectedDate, txtSelectedTime, txtSelectedDuration, TextDate, TextTime, TextPrice, TextConfirm, txtAppName;
+    private TextView txtSelectedDate, txtSelectedTime, txtSelectedDuration, TextDate, TextTime, TextPrice, TextConfirm;
     private Button btnSelectedDate, btnBookAppoinment, btnSelectedTime;
     private CheckBox serviceCheckBox;
     private DBConnector dbcon;
@@ -42,7 +45,6 @@ public class Appoinment_Booking extends AppCompatActivity {
         txtSelectedDuration = findViewById(R.id.txtSelectedDuration);
         btnSelectedDate = findViewById(R.id.btnSelectDate);
         btnSelectedTime = findViewById(R.id.btnSelectTime);
-        txtAppName = findViewById(R.id.txtappoinmentPersonName);
         btnBookAppoinment = findViewById(R.id.btnBookAppoinment);
         TextDate = findViewById(R.id.TextDate);
         TextPrice = findViewById(R.id.TotalPriceText);
@@ -59,7 +61,6 @@ public class Appoinment_Booking extends AppCompatActivity {
         dbcon = new DBConnector(this);
 
         String appoinName = dbcon.getAppoinmentCustomerName();
-        txtAppName.setText(appoinName);
 
         btnSelectedDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,13 +77,15 @@ public class Appoinment_Booking extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
-                        SimpleDateFormat simpledateformat = new SimpleDateFormat("EEEE LLLL dd yyyy");
+                        SimpleDateFormat simpledateformat = new SimpleDateFormat("EEEE LLLL dd");
                         Calendar newDate = Calendar.getInstance();
                         newDate.set(year, month, day);
                         String selectedDate = simpledateformat.format(newDate.getTime());
 
+
                         txtSelectedDate.setText(day + "-" + (month + 1) + "-" + year);
                         dbcon = new DBConnector(Appoinment_Booking.this);
+
 
                         TextDate.setText(selectedDate);
                         btnSelectedTime.setBackgroundColor(Color.parseColor("#F7BF50"));
@@ -107,7 +110,6 @@ public class Appoinment_Booking extends AppCompatActivity {
                         Calendar c = Calendar.getInstance();
                         datetime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         datetime.set(Calendar.MINUTE, min);
-
 
                         if (hourOfDay > 17) {
                             Snackbar.make(RlAppoinment, "Saloon is closed during this time\nSelect a time before 5.00 pm", Snackbar.LENGTH_LONG)
@@ -139,47 +141,6 @@ public class Appoinment_Booking extends AppCompatActivity {
                                         TextPrice.setVisibility(View.VISIBLE);
 
                                         TextConfirm.setVisibility(View.VISIBLE);
-                                        btnBookAppoinment.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-
-                                                String myTime = txtSelectedTime.getText().toString();
-                                                SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
-                                                Date d = null;
-                                                try {
-                                                    d = df.parse(myTime);
-                                                } catch (ParseException e) {
-                                                    e.printStackTrace();
-                                                }
-                                                Calendar cal = Calendar.getInstance();
-                                                cal.setTime(d);
-                                                cal.add(Calendar.MINUTE, 10);
-                                                String newTime = df.format(cal.getTime());
-                                                String newDateTime = txtSelectedDate.getText().toString() + " " + newTime;
-                                                Appoinment appoinment;
-                                                dbcon = new DBConnector(Appoinment_Booking.this);
-
-                                                appoinment = new Appoinment(null, txtAppName.getText().toString(), txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString(), "Rs.800");
-
-
-                                                System.out.println(txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString());
-                                                System.out.println(newDateTime);
-                                                Boolean forAppointmentdatestimes = dbcon.history(txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString(), newDateTime);
-
-                                                if (forAppointmentdatestimes == true) {
-                                                    Toast.makeText(getApplicationContext(), "Date Taken", Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    dbcon.addAppointment(appoinment);
-                                                    Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_SHORT).show();
-
-                                                    Intent intent = new Intent(Appoinment_Booking.this, List_Page.class);
-                                                    startActivity(intent);
-                                                    finish();
-                                                }
-                                            }
-
-                                        });
-
 
                                     } else {
                                         btnBookAppoinment.setBackgroundColor(Color.parseColor("#cccccc"));
@@ -188,6 +149,7 @@ public class Appoinment_Booking extends AppCompatActivity {
                                     }
                                 }
                             });
+
 
                         } else {
                             Snackbar.make(RlAppoinment, "Select a time after 9.00 am", Snackbar.LENGTH_LONG)
@@ -205,6 +167,64 @@ public class Appoinment_Booking extends AppCompatActivity {
                 }, 9, 0, true);
                 timepicker.show();
             }
+        });
+
+        btnBookAppoinment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                Minus 10 mins for time
+                String timeMinus = txtSelectedTime.getText().toString();
+                SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+                Date d = null;
+                try {
+                    d = df.parse(timeMinus);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(d);
+                cal.add(Calendar.MINUTE,-10);
+                String newTimeMinus = df.format(cal.getTime());
+                String DateTimeMinus = txtSelectedDate.getText().toString() + " " + newTimeMinus;
+
+//                Plus 10 mins for time
+                String timePlus = txtSelectedTime.getText().toString();
+                SimpleDateFormat dfp = new SimpleDateFormat("HH:mm:ss");
+                Date dp = null;
+                try {
+                    dp = dfp.parse(timePlus);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar calp = Calendar.getInstance();
+                calp.setTime(dp);
+                calp.add(Calendar.MINUTE,10);
+                String newTimePlus = dfp.format(calp.getTime());
+                String DateTimePlus = txtSelectedDate.getText().toString() + " " + newTimePlus;
+
+                Appoinment appoinment;
+                dbcon = new DBConnector(Appoinment_Booking.this);
+
+                appoinment = new Appoinment(null, appoinName, txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString(), "Rs.800");
+
+                System.out.println(txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString());
+                System.out.println(DateTimePlus);
+                System.out.println(DateTimeMinus);
+                Boolean forAppointmentdatestimes = dbcon.history(DateTimeMinus,DateTimePlus);
+
+                if (forAppointmentdatestimes == true) {
+                    Toast.makeText(getApplicationContext(), "Date Taken", Toast.LENGTH_SHORT).show();
+                } else {
+                    dbcon.addAppointment(appoinment);
+                    Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(Appoinment_Booking.this, List_Page.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
         });
     }
 

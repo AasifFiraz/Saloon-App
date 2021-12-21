@@ -8,9 +8,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class DBConnector extends SQLiteOpenHelper {
 
@@ -147,11 +149,13 @@ public class DBConnector extends SQLiteOpenHelper {
         }
     }
 
+
     public boolean addAppointment(Appoinment appoinment) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
 
+        cv.put("id",appoinment.getId());
         cv.put("name", appoinment.getName());
         cv.put("date", appoinment.getDate());
         cv.put("price", appoinment.getPrice());
@@ -162,6 +166,23 @@ public class DBConnector extends SQLiteOpenHelper {
             return false;
         } else {
             return true;
+        }
+    }
+
+
+    public void updateAppointment(String row_id, String name, String date){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("name", name);
+        cv.put("date", date);
+
+        long update = db.update("appointments",cv,"id=?",new String[]{row_id});
+
+        if(update==-1){
+            Toast.makeText(con.getApplicationContext(), "Failed to Update", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(con.getApplicationContext(), "Successfully Updated", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -186,16 +207,16 @@ public class DBConnector extends SQLiteOpenHelper {
         return appoinName="";
     }
 
-
     @SuppressLint("Range")
     public ArrayList<HashMap<String, String>> GetAppointmentsForCustomer() {
         SQLiteDatabase db = this.getWritableDatabase();
         SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
         ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
-        String query = "SELECT name, date, price FROM appointments WHERE user_id=" + sharedPreferences.getInt("username key", 0);
+        String query = "SELECT id, name, date, price FROM appointments WHERE user_id=" + sharedPreferences.getInt("username key", 0);
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             HashMap<String, String> appointments = new HashMap<>();
+            appointments.put("id",cursor.getString(cursor.getColumnIndex("id")));
             appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
             appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
             appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
@@ -203,6 +224,7 @@ public class DBConnector extends SQLiteOpenHelper {
         }
         return appointmentList;
     }
+
 
     @SuppressLint("Range")
     public ArrayList<HashMap<String, String>> GetAllAppointments() {
@@ -215,9 +237,24 @@ public class DBConnector extends SQLiteOpenHelper {
             appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
             appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
             appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
+
             appointmentList.add(appointments);
         }
         return appointmentList;
+    }
+
+    public boolean deleteAppointment(String id){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery( "DELETE FROM appointments WHERE id = ?",new String[]{id});
+
+
+        if(cursor.moveToFirst()){
+            return true;
+        } else{
+            return false;
+        }
     }
 
 }

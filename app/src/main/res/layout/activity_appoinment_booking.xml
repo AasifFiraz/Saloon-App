@@ -12,17 +12,11 @@
         android:layout_height="match_parent"
         tools:context=".Appoinment_Booking">
 
-        <TextView
-            android:id="@+id/txtappoinmentPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/yellowish"/>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#F7BF50">
-        </FrameLayout>
+            android:background="#F7BF50"></FrameLayout>
 
         <TextView
             android:id="@+id/DateandTimeText"
