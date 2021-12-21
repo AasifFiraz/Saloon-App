@@ -52,7 +52,6 @@ public class Main_Screen extends AppCompatActivity {
                         EditText editText = customAlert.findViewById(R.id.EdtCheckPass);
                         String entered_pass = editText.getText().toString();
 
-
                         if (entered_pass.trim().matches("admin")) {
                             Intent RegAdmin = new Intent(Main_Screen.this, Admin_Registration.class);
                             startActivity(RegAdmin);
@@ -76,5 +75,32 @@ public class Main_Screen extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Do You Want to Quit?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finishAffinity();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 }

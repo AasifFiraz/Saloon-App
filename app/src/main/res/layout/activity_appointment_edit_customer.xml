@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RlEditAppointment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7">
+
+    <TextView
+        android:id="@+id/EditAppointmentNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_account"
+        android:drawablePadding="30dp"
+        android:drawableTint="#2c2c2c"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Name   -"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtEditAppointmentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/EditAppointmentNameText"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Aasif Nawaz"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/EditAppointmentDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditAppointmentNameText"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_date_icon"
+        android:drawablePadding="30dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Date    - "
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtEditAppointmentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtEditAppointmentName"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/EditAppointmentDateText"
+        android:fontFamily="@font/poppinsbold"
+        android:text="21-12-2021"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/EditAppointmentTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditAppointmentDateText"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_date_time_icon"
+        android:drawablePadding="30dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Time    - "
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtEditAppointmentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtEditAppointmentDate"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/EditAppointmentDateText"
+        android:fontFamily="@font/poppinsbold"
+        android:text="09.00.00"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/EditAppointmentPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditAppointmentTimeText"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_price_icon"
+        android:drawablePadding="30dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Price    - "
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtEditAppointmentPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtEditAppointmentTime"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/EditAppointmentDateText"
+        android:fontFamily="@font/poppinsbold"
+        android:text="R.800"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/EditAppointmentServiceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EditAppointmentPriceText"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_service_icon"
+        android:drawablePadding="30dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Service  - "
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtEditAppointmentService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtEditAppointmentPrice"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/EditAppointmentServiceText"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Haircut"
+        android:textColor="#2c2c2c"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="348dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txtEditAppointmentService"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="#808080" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSelectNewDate"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/txtEditNewName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/rubikbold"
+        android:padding="12dp"
+        android:text="Select New Date"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:cornerRadius="5dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSelectNewTime"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/btnSelectNewDate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/rubikbold"
+        android:text="Select New Time"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:cornerRadius="5dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtEditNewName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EditAppointmentServiceText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="55dp"
+        android:hint="Full Name"
+        app:boxCornerRadiusBottomEnd="10pt"
+        app:boxCornerRadiusBottomStart="10pt"
+        app:boxCornerRadiusTopEnd="10pt"
+        app:boxCornerRadiusTopStart="10pt"
+        app:startIconDrawable="@drawable/ic_account">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EdtEditNewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEditName"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/EditAppointmentServiceText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="56dp"
+        android:layout_toRightOf="@id/txtEditNewName"
+        android:backgroundTint="#F7BF50"
+        android:fontFamily="@font/robotoblack"
+        android:text="Edit"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:cornerRadius="35dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveEdit"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/btnSelectNewTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#F7BF50"
+        android:fontFamily="@font/robotoblack"
+        android:text="Save"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:cornerRadius="35dp"
+        app:icon="@drawable/ic_save_icon"
+        app:iconGravity="start"
+        app:iconTint="#2c2c2c" />
+
+    <TextView
+        android:id="@+id/txtSelectedEditDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#f7f7f7"/>
+
+    <TextView
+        android:id="@+id/txtSelectedEditTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#f7f7f7"/>
+
+
+</RelativeLayout>

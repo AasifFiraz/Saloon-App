@@ -3,24 +3,44 @@
     android:layout_width="match_parent"
     android:layout_height="675dp">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#2c2c2c"/>
+
+    <TextView
+        android:id="@+id/AppointmentsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTint="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:drawableStart="@drawable/ic_appoinment_icon"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Appointments"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <ListView
+        android:id="@+id/LstAppointments"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/AppointmentsText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/txtNoAppointmentMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/AppointmentsText"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/poppinsbold"
         android:text="You dont have any Appointments"
         android:textColor="#2c2c2c"
-        android:textSize="20sp"
-        android:visibility="invisible" />
-
-    <ListView
-        android:id="@+id/LstAppointments"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:textSize="20sp"/>
 
 </RelativeLayout>
