@@ -2,6 +2,8 @@ package com.aasif.cl_hdcse_95_46;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -33,6 +35,7 @@ public class Customer_Registration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        overridePendingTransition(R.anim.zoomenter, R.anim.zoomenter);
         setContentView(R.layout.activity_customer_registration);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
@@ -60,6 +63,7 @@ public class Customer_Registration extends AppCompatActivity {
                 Intent login_page = new Intent(Customer_Registration.this, MainActivity.class);
                 startActivity(login_page);
                 finish();
+//                overridePendingTransition(R.anim.zoomenter, R.anim.zoomenter);
             }
         });
 
@@ -119,7 +123,8 @@ public class Customer_Registration extends AppCompatActivity {
                                     }
                                 })
                                 .setActionTextColor(getResources().getColor(android.R.color.holo_red_light ))
-                                .show();                      }
+                                .show();
+                    }
                 }
 
             }
@@ -217,15 +222,12 @@ public class Customer_Registration extends AppCompatActivity {
                     if (s.toString().isEmpty()) {
                         txtRegName.setError("Name cannot be Empty");
 
-
                     }
 
                 } else {
                     //When value is equal to characer
                     //Hides the error Message
                     txtRegName.setError(null);
-
-
                 }
             }
 
