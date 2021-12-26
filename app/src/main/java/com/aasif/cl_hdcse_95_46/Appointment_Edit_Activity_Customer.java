@@ -247,8 +247,19 @@ public class Appointment_Edit_Activity_Customer extends AppCompatActivity {
                     dbcon.updateAppointment(appId,txtAppointmentName.getText().toString(),txtSelectedEditDate.getText().toString()+" "+txtSelectedEditTime.getText().toString());
                     Toast.makeText(Appointment_Edit_Activity_Customer.this, "Success", Toast.LENGTH_SHORT).show();
 
-                    Intent i = new Intent(getApplicationContext(), List_Page.class);
-                    startActivity(i);
+
+                    Intent mIntent = getIntent();
+                    String previousActivity= mIntent.getStringExtra("To_Edit_Act");
+
+                    if(previousActivity.equals("CustomerAct")){
+                        Intent cusAct = new Intent(getApplicationContext(), List_Page.class);
+                        startActivity(cusAct);
+                    }else{
+                        Intent adminAct = new Intent(getApplicationContext(), AdminAppointments.class);
+                        startActivity(adminAct);
+                    }
+
+
                 }
             }
         });

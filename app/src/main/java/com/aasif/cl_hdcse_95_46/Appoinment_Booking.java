@@ -222,6 +222,7 @@ public class Appoinment_Booking extends AppCompatActivity {
                     Intent intent = new Intent(Appoinment_Booking.this, List_Page.class);
                     startActivity(intent);
                     finish();
+
                 }
             }
 

@@ -17,6 +17,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ import java.util.HashMap;
 public class AdminAppointments extends AppCompatActivity {
     ListView lvAppointments;
     TextView txtNoAppointment;
-    Button btnEditAppointment, btnDeleteAppointment;
+    Button btnEditAppointment, btnDeleteAppointment, btnCalBill;
     ViewGroup viewGroup;
 
     @Override
@@ -45,16 +46,18 @@ public class AdminAppointments extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(AdminAppointments.this);
-                View view1 = LayoutInflater.from(AdminAppointments.this).inflate(R.layout.custom_alert_dialog_appointment, viewGroup, false);
+                View view1 = LayoutInflater.from(AdminAppointments.this).inflate(R.layout.custom_alert_dialog_appointment_admin, viewGroup, false);
                 builder.setCancelable(true);
                 builder.setView(view1);
 
                 final AlertDialog alertDialog = builder.create();
                 btnDeleteAppointment = view1.findViewById(R.id.btnDeleteAppointment);
                 btnEditAppointment = view1.findViewById(R.id.btnEditAppointment);
+                btnCalBill = view1.findViewById(R.id.btnCalculateBill);
+
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                ArrayList<HashMap<String, String>> userList = dbcon.GetAppointmentsForCustomer();
+                ArrayList<HashMap<String, String>> userList = dbcon.GetAllAppointments();
 
                 ListAdapter adapter = new SimpleAdapter(AdminAppointments.this, userList, R.layout.appointments_list,
                         new String[]{"name", "date", "price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate,
@@ -82,17 +85,36 @@ public class AdminAppointments extends AppCompatActivity {
                         String appointmentName = (String) obj.get("name");
                         String appointmentPrice = (String) obj.get("price");
                         String appointmentDateTime = (String) obj.get("date");
-                        String [] sepAppointmentDateTime = appointmentDateTime.split(" ");
+                        String[] sepAppointmentDateTime = appointmentDateTime.split(" ");
 
                         Bundle bundle = new Bundle();
-                        Intent appointment_edit_page = new Intent(AdminAppointments.this, Appointment_Edit_Activity_Admin.class);
-                        bundle.putString("appointId",appointmentId);
+                        Intent appointment_edit_page = new Intent(AdminAppointments.this, Appointment_Edit_Activity_Customer.class);
+                        bundle.putString("appointId", appointmentId);
                         bundle.putString("appointName", appointmentName);
-                        bundle.putString("appointPrice",appointmentPrice);
-                        bundle.putString("appointDate",sepAppointmentDateTime[0]);
-                        bundle.putString("appointTime",sepAppointmentDateTime[1]);
+                        bundle.putString("appointPrice", appointmentPrice);
+                        bundle.putString("appointDate", sepAppointmentDateTime[0]);
+                        bundle.putString("appointTime", sepAppointmentDateTime[1]);
                         appointment_edit_page.putExtras(bundle);
+
+//                        Sending the value to check what is the previous Activity
+                        appointment_edit_page.putExtra("To_Edit_Act","adminAct");
                         startActivity(appointment_edit_page);
+                        alertDialog.dismiss();
+                    }
+                });
+
+                btnCalBill.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Toast.makeText(AdminAppointments.this, "Cal Bill", Toast.LENGTH_SHORT).show();
+
+                        String appointmentUser_id = (String) obj.get("user_id");
+
+                        Intent i = new Intent(AdminAppointments.this, bill_activity.class);
+                        i.putExtra("appUser_Id",appointmentUser_id);
+                        startActivity(i);
+
                         alertDialog.dismiss();
                     }
                 });
@@ -102,12 +124,14 @@ public class AdminAppointments extends AppCompatActivity {
             }
         });
     }
-    private void showAppointmentList (DBConnector dbcon){
-        ArrayList<HashMap<String, String>> userList = dbcon.GetAppointmentsForCustomer();
+
+    private void showAppointmentList(DBConnector dbcon) {
+        ArrayList<HashMap<String, String>> userList = dbcon.GetAllAppointments();
 
         ListAdapter adapter = new SimpleAdapter(this, userList, R.layout.appointments_list,
-                new String[]{"name","date","price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate,
+                new String[]{"name", "date", "price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate,
                 R.id.txtBookedPrice});
+
 
 
         lvAppointments.setEmptyView(txtNoAppointment);
