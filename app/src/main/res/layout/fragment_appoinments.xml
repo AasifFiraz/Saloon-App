@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="675dp">
-
+<!--675dp-->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#2c2c2c"/>
+        android:layout_height="80dp"
+        android:background="#2c2c2c" />
 
     <TextView
         android:id="@+id/AppointmentsText"
@@ -14,12 +14,12 @@
         android:layout_height="wrap_content"
         android:drawableTint="@color/white"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="37dp"
         android:drawableStart="@drawable/ic_appoinment_icon"
         android:drawablePadding="10dp"
         android:fontFamily="@font/poppinsbold"
         android:text="Appointments"
-        android:textColor="@color/white"
+        android:textColor="#f7f7f7"
         android:textSize="20sp" />
 
     <ListView
@@ -27,7 +27,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/AppointmentsText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="530dp" />
 
     <TextView
         android:id="@+id/txtNoAppointmentMessage"
@@ -42,5 +42,17 @@
         android:text="You dont have any Appointments"
         android:textColor="#2c2c2c"
         android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/txtTotalAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Total - Rs.1600"
+        android:textColor="#2c2c2c"
+        android:textSize="20sp" />
 
 </RelativeLayout>

@@ -18,8 +18,8 @@ public class List_Page extends AppCompatActivity {
         setContentView(R.layout.activity_list_page);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
-        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#F7BF50\">" + getString(R.string.app_name) + "</font>"));
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F7BF50")));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#2c2c2c\">" + getString(R.string.app_name) + "</font>"));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2c2c2c")));
 
 
         getSupportFragmentManager().beginTransaction()

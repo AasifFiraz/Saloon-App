@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -22,13 +23,15 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AppointmentFragment extends Fragment {
+public class AppointmentFragment extends Fragment  {
     ListView lvAppointments;
-    TextView txtNoAppointment;
+    TextView txtNoAppointment, txtTotalAmount;
     ViewGroup viewGroup;
     Button btnEditAppointment, btnDeleteAppointment;
+    private DBConnector dbcon;
 
     public AppointmentFragment() {
+
     }
 
 
@@ -42,16 +45,18 @@ public class AppointmentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_appoinments, container, false);
         lvAppointments = view.findViewById(R.id.LstAppointments);
         txtNoAppointment = view.findViewById(R.id.txtNoAppointmentMessage);
+        txtTotalAmount = view.findViewById(R.id.txtTotalAmount);
 
         viewGroup = view.findViewById(R.id.content);
 
         return view;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        DBConnector dbcon = new DBConnector(getActivity());
+        dbcon = new DBConnector(getActivity());
         showAppointmentList(dbcon);
 
         lvAppointments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,6 +81,7 @@ public class AppointmentFragment extends Fragment {
 
 
                 HashMap<String, Object> obj = (HashMap<String, Object>) adapter.getItem(position);
+
 
                btnDeleteAppointment.setOnClickListener(new View.OnClickListener() {
                    @Override
@@ -106,6 +112,7 @@ public class AppointmentFragment extends Fragment {
                        bundle.putString("appointDate",sepAppointmentDateTime[0]);
                        bundle.putString("appointTime",sepAppointmentDateTime[1]);
                        appointment_edit_page.putExtras(bundle);
+                       appointment_edit_page.putExtra("To_Edit_Act","CustomerAct");
                        startActivity(appointment_edit_page);
                        alertDialog.dismiss();
                    }
@@ -122,9 +129,16 @@ public class AppointmentFragment extends Fragment {
         ListAdapter adapter = new SimpleAdapter(getActivity(), userList, R.layout.appointments_list,
                 new String[]{"name", "date", "price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate, R.id.txtBookedPrice});
 
-
         lvAppointments.setEmptyView(txtNoAppointment);
         lvAppointments.setAdapter(adapter);
+
+        int totAmount = lvAppointments.getAdapter().getCount();
+
+        if(userList.isEmpty()){
+            txtTotalAmount.setText("");
+        }else {
+            txtTotalAmount.setText("Total - Rs." + totAmount * 800);
+        }
     }
 
 }
