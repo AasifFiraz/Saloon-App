@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/appointment_layout_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:fontFamily="@font/poppinsbold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:text="Select an Option from below to continue" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditAppointment"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="20dp"
+                android:fontFamily="@font/robotomedium"
+                android:paddingLeft="20dp"
+                android:text="Edit"
+                android:textSize="15sp"
+                android:drawableLeft="@drawable/ic_edit_icon"
+                android:textColor="#2c2c2c"
+                android:paddingRight="20dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeleteAppointment"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="20dp"
+                android:fontFamily="@font/robotomedium"
+                android:paddingLeft="20dp"
+                android:text="Delete"
+                android:drawableLeft="@drawable/ic_trash_icon"
+                android:textColor="#2c2c2c"
+                android:paddingRight="20dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCalculateBill"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Calculate Bill"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/white"
+                app:cornerRadius="20dp"
+                android:fontFamily="@font/robotomedium"
+                android:paddingLeft="20dp"
+                android:drawableLeft="@drawable/ic_bill_icon"
+                android:textColor="#2c2c2c"
+                android:paddingRight="20dp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

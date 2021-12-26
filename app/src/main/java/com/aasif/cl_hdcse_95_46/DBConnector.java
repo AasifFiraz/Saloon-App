@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -207,6 +208,40 @@ public class DBConnector extends SQLiteOpenHelper {
         return appoinName="";
     }
 
+    public String getAppoinmentCustomerEmail() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String appoinName;
+        SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
+        String query = "SELECT email FROM customers WHERE user_id=" + sharedPreferences.getInt("username key", 0);
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                appoinName = cursor.getString(0);
+                return appoinName;
+            } while (cursor.moveToNext());
+
+        }else{
+
+        }
+        return appoinName="";
+    }
+
+    public long getAppoinmentTotal(int user_id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        int appoinName;
+        String query = "SELECT COUNT(id) FROM appointments WHERE user_id=" + user_id;
+//        Cursor cursor = db.rawQuery(query, null);
+
+        SQLiteStatement statement = db.compileStatement(query);
+        long count = statement.simpleQueryForLong();
+        return count;
+    }
+
+
     @SuppressLint("Range")
     public ArrayList<HashMap<String, String>> GetAppointmentsForCustomer() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -230,13 +265,15 @@ public class DBConnector extends SQLiteOpenHelper {
     public ArrayList<HashMap<String, String>> GetAllAppointments() {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
-        String query = "SELECT name, date, price FROM appointments";
+        String query = "SELECT id, name, date, price, user_id FROM appointments";
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             HashMap<String, String> appointments = new HashMap<>();
+            appointments.put("id",cursor.getString(cursor.getColumnIndex("id")));
             appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
             appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
             appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
+            appointments.put("user_id", cursor.getString(cursor.getColumnIndex("user_id")));
 
             appointmentList.add(appointments);
         }
@@ -255,6 +292,24 @@ public class DBConnector extends SQLiteOpenHelper {
         } else{
             return false;
         }
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<HashMap<String, String>> GetAppointmentsLogsForCustomer(int userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
+        ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
+        String query = "SELECT id, name, date, price FROM appointments WHERE user_id=" + userId;
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            HashMap<String, String> appointments = new HashMap<>();
+            appointments.put("id",cursor.getString(cursor.getColumnIndex("id")));
+            appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
+            appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
+            appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
+            appointmentList.add(appointments);
+        }
+        return appointmentList;
     }
 
 }

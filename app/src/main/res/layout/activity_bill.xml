@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bill_activity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#2c2c2c"/>
+
+    <TextView
+        android:id="@+id/BillHistoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="BILL HISTORY"
+        android:textColor="#f7f7f7"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/txtNoOfAppointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BillHistoryText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/rubikmedium"
+        android:text="You Have 100 Appointments"
+        android:textColor="#2a2a2a"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtNoOfAppointments"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/rubikmedium"
+        android:text="Your Appointments"
+        android:textColor="#2a2a2a"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/LstBillAppointments"
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:layout_below="@id/txtNoOfAppointments"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="80dp" />
+
+    <TextView
+        android:id="@+id/txtTotalBillAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/rubikmedium"
+        android:lineSpacingExtra="10dp"
+        android:text="Your Total\nRs.1600"
+        android:textColor="#2c2c2c"
+        android:textSize="20sp" />
+
+</RelativeLayout>
