@@ -4,12 +4,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#2c2c2c"></FrameLayout>
 
     <TextView
+        android:id="@+id/accountHolderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Account"
-        android:textSize="40sp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="59dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Account Holder"
+        android:textColor="#f7f7f7"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/accountHolderTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountHolderText"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"
+        android:drawableTint="#2c2c2c"
+        android:drawableStart="@drawable/ic_account"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Name - A"
+        android:textColor="#2c2c2c"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/accountHolderTextName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@color/GreyTransparent" />
+
+    <TextView
+        android:id="@+id/accountHolderTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTint="#2c2c2c"
+        android:layout_below="@id/accountHolderTextName"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="34dp"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Email - "
+        android:textColor="#2c2c2c"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/accountHolderTextEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@color/GreyTransparent" />
+
+    <TextView
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/accountHolderTextEmail"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="14dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_logout_icon"
+        android:drawablePadding="15dp"
+        android:focusable="true"
+        android:fontFamily="@font/poppinsmedium"
+        android:paddingTop="31dp"
+        android:text="Logout - "
+        android:textColor="#2c2c2c"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="360dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/btnLogout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp"
+        android:background="@color/GreyTransparent" />
 
 </RelativeLayout>
