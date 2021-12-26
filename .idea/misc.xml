@@ -10,6 +10,8 @@
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_account.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_appoinment_icon.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_edit_icon.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_email.xml" value="0.2203125" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_logout_icon.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_password.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_price_icon.xml" value="0.2203125" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/drawable/ic_trash_icon.xml" value="0.2203125" />
@@ -30,9 +32,10 @@
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_admin_registration.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appoinment_booking.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appointment_edit.xml" value="0.25" />
-        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appointment_edit_admin.xml" value="0.20416666666666666" />
-        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appointment_edit_customer.xml" value="0.20416666666666666" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appointment_edit_admin.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appointment_edit_customer.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_appointments_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_bill.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_customer_registration.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/activity_list_page.xml" value="0.25" />
@@ -44,10 +47,11 @@
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/appointments_list.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/custom_alert_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/custom_alert_dialog_appointment.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/custom_alert_dialog_appointment_admin.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_about__us.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_about_us.xml" value="0.20416666666666666" />
-        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_aboutus.xml" value="0.20416666666666666" />
-        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_account.xml" value="0.20208333333333334" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_aboutus.xml" value="0.25" />
+        <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_appoinment_list.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_appoinments.xml" value="0.25" />
         <entry key="..\:/CLHDCSE9546/app/src/main/res/layout/fragment_appoinments_list.xml" value="0.20416666666666666" />

@@ -4,12 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#2c2c2c"></FrameLayout>
+
+    <TextView
+        android:id="@+id/AboutUsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="59dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="About Us"
+        android:textColor="#f7f7f7"
+        android:textSize="22sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="About Us"
-        android:textSize="40sp"/>
+        android:layout_below="@id/AboutUsText"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#2c2c2c"
+        android:textSize="17sp"
+        android:padding="5dp"
+        android:lineSpacingExtra="3dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Saloon SD is a one of the famous saloons in Sri Lanka and they have expanded their services within a short period of time. Currently, all the appoints are managed manually and the management of the saloon is expecting to develop a user-friendly mobile application with multiple features supporting both customers and administrator." />
 
 </RelativeLayout>

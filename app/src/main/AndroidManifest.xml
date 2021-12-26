@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CLHDCSE9546">
         <activity
+            android:name=".bill_activity"
+            android:exported="false" />
+        <activity
             android:name=".Appointment_Edit_Activity_Admin"
             android:exported="false" />
         <activity
