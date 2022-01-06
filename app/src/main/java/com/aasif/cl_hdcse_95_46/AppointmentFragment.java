@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -76,7 +76,7 @@ public class AppointmentFragment extends Fragment  {
                 ArrayList<HashMap<String, String>> userList = dbcon.GetAppointmentsForCustomer();
 
                 ListAdapter adapter = new SimpleAdapter(getActivity(), userList, R.layout.appointments_list,
-                        new String[]{"name", "date", "price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate,
+                        new String[]{"name", "date_time", "price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate,
                          R.id.txtBookedPrice});
 
 
@@ -91,6 +91,7 @@ public class AppointmentFragment extends Fragment  {
                        dbcon.deleteAppointment(appoinmentId);
                        showAppointmentList(dbcon);
 
+                       Toast.makeText(getActivity(), "Deleted Appointment", Toast.LENGTH_SHORT).show();
                        alertDialog.dismiss();
                    }
                });
@@ -101,11 +102,11 @@ public class AppointmentFragment extends Fragment  {
                        String appointmentId = (String) obj.get("id");
                        String appointmentName = (String) obj.get("name");
                        String appointmentPrice = (String) obj.get("price");
-                       String appointmentDateTime = (String) obj.get("date");
+                       String appointmentDateTime = (String) obj.get("date_time");
                        String [] sepAppointmentDateTime = appointmentDateTime.split(" ");
 
                        Bundle bundle = new Bundle();
-                       Intent appointment_edit_page = new Intent(getActivity(), Appointment_Edit_Activity_Customer.class);
+                       Intent appointment_edit_page = new Intent(getActivity(), Appointment_Edit_Activity.class);
                        bundle.putString("appointId",appointmentId);
                        bundle.putString("appointName", appointmentName);
                        bundle.putString("appointPrice",appointmentPrice);
@@ -127,7 +128,7 @@ public class AppointmentFragment extends Fragment  {
         ArrayList<HashMap<String, String>> userList = dbcon.GetAppointmentsForCustomer();
 
         ListAdapter adapter = new SimpleAdapter(getActivity(), userList, R.layout.appointments_list,
-                new String[]{"name", "date", "price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate, R.id.txtBookedPrice});
+                new String[]{"name", "date_time", "price"}, new int[]{R.id.txtBookedName, R.id.txtBookedDate, R.id.txtBookedPrice});
 
         lvAppointments.setEmptyView(txtNoAppointment);
         lvAppointments.setAdapter(adapter);

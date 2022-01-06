@@ -32,7 +32,7 @@ public class DBConnector extends SQLiteOpenHelper {
 
 
         db.execSQL("create table appointments (id INTEGER PRIMARY KEY, name text, " +
-                "date text, price text, user_id INTEGER ,FOREIGN KEY (user_id) REFERENCES customers(user_id))");
+                "date_time text, price text, user_id INTEGER ,FOREIGN KEY (user_id) REFERENCES customers(user_id))");
     }
 
     @Override
@@ -40,6 +40,7 @@ public class DBConnector extends SQLiteOpenHelper {
 
     }
 
+//    Creates the Customer
     public boolean createCustomer(Customers customers) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -58,6 +59,7 @@ public class DBConnector extends SQLiteOpenHelper {
         }
     }
 
+//    Checks for similar customer Emails
     public boolean checkDuplicateCustomerEmail(String email) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -71,6 +73,7 @@ public class DBConnector extends SQLiteOpenHelper {
         }
     }
 
+    // Creates new Admin
     public boolean createAdmins(Admins admins) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -88,6 +91,7 @@ public class DBConnector extends SQLiteOpenHelper {
         return true;
     }
 
+//    Checking for duplicate/ similar admin email
     public boolean checkDuplicateAdminName(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from admins where name = ?", new String[]{name});
@@ -99,6 +103,7 @@ public class DBConnector extends SQLiteOpenHelper {
         }
     }
 
+//    Checks the customer email and password when login
     public Boolean checkCustomerCredentials(String email, String pass) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -109,6 +114,7 @@ public class DBConnector extends SQLiteOpenHelper {
             int user_id = cursor.getInt(0);
             System.out.println(user_id);
 
+//          Stores the user_id so when displaying appointments it displays only for the relevant users
             SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -122,7 +128,7 @@ public class DBConnector extends SQLiteOpenHelper {
         }
     }
 
-
+//  Checks admin email and password when login
     public Boolean checkAdminCredentials(String email, String pass) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -136,10 +142,11 @@ public class DBConnector extends SQLiteOpenHelper {
     }
 
 
+//    Checks the appointment by adding 10 mins to it
     public Boolean history(String startdate, String enddate) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM appointments" +
-                " WHERE date" +
+                " WHERE date_time" +
                 " BETWEEN ? AND ?", new String[]{startdate, enddate});
 
 
@@ -158,7 +165,7 @@ public class DBConnector extends SQLiteOpenHelper {
 
         cv.put("id",appoinment.getId());
         cv.put("name", appoinment.getName());
-        cv.put("date", appoinment.getDate());
+        cv.put("date_time", appoinment.getDate());
         cv.put("price", appoinment.getPrice());
         cv.put("user_id", sharedPreferences.getInt("username key", 0));
         long insert = db.insert("appointments", null, cv);
@@ -171,12 +178,13 @@ public class DBConnector extends SQLiteOpenHelper {
     }
 
 
+//  Method to Update an appointment by the relevant customer
     public void updateAppointment(String row_id, String name, String date){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put("name", name);
-        cv.put("date", date);
+        cv.put("date_time", date);
 
         long update = db.update("appointments",cv,"id=?",new String[]{row_id});
 
@@ -187,6 +195,7 @@ public class DBConnector extends SQLiteOpenHelper {
         }
     }
 
+//   Retrieving the customers name by using shared preference user_id
     public String getAppoinmentCustomerName() {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -208,6 +217,7 @@ public class DBConnector extends SQLiteOpenHelper {
         return appoinName="";
     }
 
+//    Retireving the customers email by using shared preference to display on the account page
     public String getAppoinmentCustomerEmail() {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -229,12 +239,11 @@ public class DBConnector extends SQLiteOpenHelper {
         return appoinName="";
     }
 
+//  Getting the no of appointments created by a specific user to calculate the total
     public long getAppoinmentTotal(int user_id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        int appoinName;
         String query = "SELECT COUNT(id) FROM appointments WHERE user_id=" + user_id;
-//        Cursor cursor = db.rawQuery(query, null);
 
         SQLiteStatement statement = db.compileStatement(query);
         long count = statement.simpleQueryForLong();
@@ -242,18 +251,19 @@ public class DBConnector extends SQLiteOpenHelper {
     }
 
 
+//    Retrieving only the appointments booked by a customer
     @SuppressLint("Range")
     public ArrayList<HashMap<String, String>> GetAppointmentsForCustomer() {
         SQLiteDatabase db = this.getWritableDatabase();
         SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
         ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
-        String query = "SELECT id, name, date, price FROM appointments WHERE user_id=" + sharedPreferences.getInt("username key", 0);
+        String query = "SELECT id, name, date_time, price FROM appointments WHERE user_id=" + sharedPreferences.getInt("username key", 0);
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             HashMap<String, String> appointments = new HashMap<>();
             appointments.put("id",cursor.getString(cursor.getColumnIndex("id")));
             appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
-            appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
+            appointments.put("date_time", cursor.getString(cursor.getColumnIndex("date_time")));
             appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
             appointmentList.add(appointments);
         }
@@ -261,17 +271,18 @@ public class DBConnector extends SQLiteOpenHelper {
     }
 
 
+//    Retreving all the appointments booked by all the customers
     @SuppressLint("Range")
     public ArrayList<HashMap<String, String>> GetAllAppointments() {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
-        String query = "SELECT id, name, date, price, user_id FROM appointments";
+        String query = "SELECT id, name, date_time, price, user_id FROM appointments";
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             HashMap<String, String> appointments = new HashMap<>();
             appointments.put("id",cursor.getString(cursor.getColumnIndex("id")));
             appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
-            appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
+            appointments.put("date_time", cursor.getString(cursor.getColumnIndex("date_time")));
             appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
             appointments.put("user_id", cursor.getString(cursor.getColumnIndex("user_id")));
 
@@ -280,6 +291,7 @@ public class DBConnector extends SQLiteOpenHelper {
         return appointmentList;
     }
 
+//    Delete an appointment by using the customers id
     public boolean deleteAppointment(String id){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -294,18 +306,19 @@ public class DBConnector extends SQLiteOpenHelper {
         }
     }
 
+//  Method used in admin activity to display the appointments booked to calculate bill
+//  Retrieving the appointments booked by a customer using the user_id
     @SuppressLint("Range")
     public ArrayList<HashMap<String, String>> GetAppointmentsLogsForCustomer(int userId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        SharedPreferences sharedPreferences = con.getSharedPreferences("save userinfo", Context.MODE_PRIVATE);
         ArrayList<HashMap<String, String>> appointmentList = new ArrayList<>();
-        String query = "SELECT id, name, date, price FROM appointments WHERE user_id=" + userId;
+        String query = "SELECT id, name, date_time, price FROM appointments WHERE user_id=" + userId;
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             HashMap<String, String> appointments = new HashMap<>();
             appointments.put("id",cursor.getString(cursor.getColumnIndex("id")));
             appointments.put("name", cursor.getString(cursor.getColumnIndex("name")));
-            appointments.put("date", cursor.getString(cursor.getColumnIndex("date")));
+            appointments.put("date_time", cursor.getString(cursor.getColumnIndex("date_time")));
             appointments.put("price", cursor.getString(cursor.getColumnIndex("price")));
             appointmentList.add(appointments);
         }

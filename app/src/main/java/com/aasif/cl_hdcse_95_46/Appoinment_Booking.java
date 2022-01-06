@@ -108,9 +108,10 @@ public class Appoinment_Booking extends AppCompatActivity {
 
                         Calendar datetime = Calendar.getInstance();
                         Calendar c = Calendar.getInstance();
-                        datetime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        datetime.set(Calendar.MINUTE, min);
+                        datetime.set(c.HOUR_OF_DAY, hourOfDay);
+                        datetime.set(c.MINUTE, min);
 
+//                      Checking if Time selected by customer is after 5.00 pm
                         if (hourOfDay > 17) {
                             Snackbar.make(RlAppoinment, "Saloon is closed during this time\nSelect a time before 5.00 pm", Snackbar.LENGTH_LONG)
                                     .setAction("CLOSE", new View.OnClickListener() {
@@ -121,6 +122,8 @@ public class Appoinment_Booking extends AppCompatActivity {
                                     })
                                     .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
                                     .show();
+
+//                      Checking if Time selected by customer is after 9.00 am and before 5.00 pm
                         } else if (hourOfDay >= 9) {
 
                             int hour = hourOfDay % 12;
@@ -150,7 +153,7 @@ public class Appoinment_Booking extends AppCompatActivity {
                                 }
                             });
 
-
+//                      Displaying error message if time is before 9.00 am
                         } else {
                             Snackbar.make(RlAppoinment, "Select a time after 9.00 am", Snackbar.LENGTH_LONG)
                                     .setAction("CLOSE", new View.OnClickListener() {
@@ -173,7 +176,7 @@ public class Appoinment_Booking extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Minus 10 mins for time
+//              Storing the time selected and reducing 10 mins from it
                 String timeMinus = txtSelectedTime.getText().toString();
                 SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
                 Date d = null;
@@ -188,7 +191,7 @@ public class Appoinment_Booking extends AppCompatActivity {
                 String newTimeMinus = df.format(cal.getTime());
                 String DateTimeMinus = txtSelectedDate.getText().toString() + " " + newTimeMinus;
 
-//                Plus 10 mins for time
+//              Storing the time selected and adding 10 mins to it
                 String timePlus = txtSelectedTime.getText().toString();
                 SimpleDateFormat dfp = new SimpleDateFormat("HH:mm:ss");
                 Date dp = null;
@@ -208,16 +211,15 @@ public class Appoinment_Booking extends AppCompatActivity {
 
                 appoinment = new Appoinment(null, appoinName, txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString(), "Rs.800");
 
-                System.out.println(txtSelectedDate.getText().toString() + " " + txtSelectedTime.getText().toString());
-                System.out.println(DateTimePlus);
-                System.out.println(DateTimeMinus);
                 Boolean forAppointmentdatestimes = dbcon.history(DateTimeMinus,DateTimePlus);
 
+                // Checking if date and time are already available in database
+                // Restricting customer to book a time which is already booked and also 10 mins after
                 if (forAppointmentdatestimes == true) {
-                    Toast.makeText(getApplicationContext(), "Date Taken", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Date and Time are Booked", Toast.LENGTH_SHORT).show();
                 } else {
                     dbcon.addAppointment(appoinment);
-                    Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Successfully Booked", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(Appoinment_Booking.this, List_Page.class);
                     startActivity(intent);

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#f7f7f7"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/RlAdminLogin"
     android:layout_width="match_parent"
@@ -139,3 +144,4 @@
         android:textSize="18dp"
         app:cornerRadius="25dp" />
 </RelativeLayout>
+</ScrollView>

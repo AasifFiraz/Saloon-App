@@ -16,7 +16,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#F7BF50"></FrameLayout>
+            android:background="#2c2c2c"></FrameLayout>
 
         <TextView
             android:id="@+id/DateandTimeText"
@@ -27,8 +27,9 @@
             android:drawableStart="@drawable/ic_date_time_icon"
             android:drawablePadding="10dp"
             android:fontFamily="@font/poppinsbold"
+            android:drawableTint="#f7f7f7"
             android:text="Date and Time"
-            android:textColor="#2c2c2c"
+            android:textColor="#f7f7f7"
             android:textSize="20sp" />
 
         <com.google.android.material.button.MaterialButton
@@ -65,8 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@+id/btnSelectTime"
-            android:layout_marginTop="50dp"
-            android:background="#F7BF50">
+            android:layout_marginTop="48dp"
+            android:background="#2c2c2c">
 
         </FrameLayout>
 
@@ -81,7 +82,8 @@
             android:drawablePadding="10dp"
             android:fontFamily="@font/poppinsbold"
             android:text="Select Service"
-            android:textColor="#2c2c2c"
+            android:drawableTint="#f7f7f7"
+            android:textColor="#f7f7f7"
             android:textSize="20sp" />
 
         <CheckBox

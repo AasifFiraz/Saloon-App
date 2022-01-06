@@ -31,7 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
+public class Appointment_Edit_Activity extends AppCompatActivity {
     private TextView txtAppointmentName, txtAppointmentDate, txtAppointmentPrice, txtAppointmentTime, txtSelectedEditDate,
             EditDateText, EditNameText, EditTimeText, txtSelectedEditTime;
     private TextInputLayout txtEditNewName;
@@ -43,13 +43,12 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment_edit_customer);
+        setContentView(R.layout.activity_appointment_edit);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#f7f7f7\">" + "Edit Appointment" + "</font>"));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2c2c2c")));
         actionBar.setLogo(R.drawable.ic_edit_icon);
-//        Same code used in Appointment_Edit_Activity_Customer, but the only difference is the intent
 
         txtAppointmentDate = findViewById(R.id.txtEditAppointmentDate);
         txtAppointmentName = findViewById(R.id.txtEditAppointmentName);
@@ -68,10 +67,10 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
         txtSelectedEditDate = findViewById(R.id.txtSelectedEditDate);
         txtSelectedEditTime = findViewById(R.id.txtSelectedEditTime);
 
-
         // Calling the necessary methods
         checkName();
 
+//      Saving all the values in text fields which are retrieved from the previous activity
         Bundle bundle = getIntent().getExtras();
         String appId = bundle.getString("appointId");
         String appName = bundle.getString("appointName");
@@ -91,7 +90,6 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
         btnEditName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Choose a Different Time", Toast.LENGTH_SHORT).show();
 
                 if (!checkNameOnClick()) {
                     Snackbar.make(RlEditAppointment, "Check Errors and Try Again",
@@ -103,7 +101,7 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
                     }).show();
                 } else {
 
-                    dbcon = new DBConnector(Appointment_Edit_Activity_Admin.this);
+                    dbcon = new DBConnector(Appointment_Edit_Activity.this);
 
                     txtAppointmentName.setText(edtEditNewName.getText().toString());
                     txtAppointmentName.setTextColor(getResources().getColorStateList(R.color.yellowish));
@@ -124,7 +122,7 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
                 month = c.get(Calendar.MONTH);
                 day = c.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datedialog = new DatePickerDialog(Appointment_Edit_Activity_Admin.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datedialog = new DatePickerDialog(Appointment_Edit_Activity.this, new DatePickerDialog.OnDateSetListener() {
 
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -135,7 +133,7 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
                         String TextDate = simpledateformat.format(newDate.getTime());
 
                         String selectedDate = day + "-" + (month + 1) + "-" + year;
-                        dbcon = new DBConnector(Appointment_Edit_Activity_Admin.this);
+                        dbcon = new DBConnector(Appointment_Edit_Activity.this);
 
                         txtAppointmentDate.setText(TextDate);
                         txtAppointmentDate.setTextColor(getResources().getColorStateList(R.color.yellowish));
@@ -154,14 +152,14 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
         btnSelectNewTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimePickerDialog timepicker = new TimePickerDialog(Appointment_Edit_Activity_Admin.this, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog timepicker = new TimePickerDialog(Appointment_Edit_Activity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int min) {
 
                         Calendar datetime = Calendar.getInstance();
                         Calendar c = Calendar.getInstance();
-                        datetime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        datetime.set(Calendar.MINUTE, min);
+                        datetime.set(c.HOUR_OF_DAY, hourOfDay);
+                        datetime.set(c.MINUTE, min);
 
                         if (hourOfDay > 17) {
                             Snackbar.make(RlEditAppointment, "Saloon is closed during this time\nSelect a time before 5.00 pm", Snackbar.LENGTH_LONG)
@@ -208,7 +206,7 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Minus 10 mins for time
+//              Storing the time selected and reducing 10 mins from it
                 String timeMinus = txtSelectedEditTime.getText().toString();
                 SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
                 Date d = null;
@@ -223,7 +221,7 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
                 String newTimeMinus = df.format(cal.getTime());
                 String DateTimeMinus = txtSelectedEditDate.getText().toString() + " " + newTimeMinus;
 
-//               Plus 10 mins for time
+//              Storing the time selected and adding 10 mins to it
                 String timePlus = txtSelectedEditTime.getText().toString();
                 SimpleDateFormat dfp = new SimpleDateFormat("HH:mm:ss");
                 Date dp = null;
@@ -238,20 +236,33 @@ public class Appointment_Edit_Activity_Admin extends AppCompatActivity {
                 String newTimePlus = dfp.format(calp.getTime());
                 String DateTimePlus = txtSelectedEditDate.getText().toString() + " " + newTimePlus;
 
-                dbcon = new DBConnector(Appointment_Edit_Activity_Admin.this);
+                dbcon = new DBConnector(Appointment_Edit_Activity.this);
 
                 Boolean forAppointmentdatestimes = dbcon.history(DateTimeMinus,DateTimePlus);
 
+                // Checking if date and time are already available in database
+                // Restricting customer to book a time which is already booked and also 10 mins after
                 if (forAppointmentdatestimes == true) {
                     Toast.makeText(getApplicationContext(), "Choose a Different Time", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     //Updates Appointment
                     dbcon.updateAppointment(appId,txtAppointmentName.getText().toString(),txtSelectedEditDate.getText().toString()+" "+txtSelectedEditTime.getText().toString());
-                    Toast.makeText(Appointment_Edit_Activity_Admin.this, "Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Appointment_Edit_Activity.this, "Success", Toast.LENGTH_SHORT).show();
 
-                    Intent i = new Intent(getApplicationContext(), AdminAppointments.class);
-                    startActivity(i);
+
+                    Intent mIntent = getIntent();
+                    String previousActivity= mIntent.getStringExtra("To_Edit_Act");
+
+                    if(previousActivity.equals("CustomerAct")){
+                        Intent cusAct = new Intent(getApplicationContext(), List_Page.class);
+                        startActivity(cusAct);
+                    }else{
+                        Intent adminAct = new Intent(getApplicationContext(), AdminAppointments.class);
+                        startActivity(adminAct);
+                    }
+
+
                 }
             }
         });

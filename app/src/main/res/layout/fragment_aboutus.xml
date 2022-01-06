@@ -25,13 +25,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/AboutUsText"
-        android:layout_marginRight="5dp"
         android:layout_marginTop="30dp"
-        android:textColor="#2c2c2c"
-        android:textSize="17sp"
-        android:padding="5dp"
-        android:lineSpacingExtra="3dp"
+        android:layout_marginRight="5dp"
         android:fontFamily="@font/poppinsmedium"
-        android:text="Saloon SD is a one of the famous saloons in Sri Lanka and they have expanded their services within a short period of time. Currently, all the appoints are managed manually and the management of the saloon is expecting to develop a user-friendly mobile application with multiple features supporting both customers and administrator." />
+        android:lineSpacingExtra="3dp"
+        android:padding="5dp"
+        android:layout_marginStart="8dp"
+        android:text="Saloon SD is a one of the famous saloons in Sri Lanka and they have expanded their services within a short period of time. Currently, all the appoints are managed manually and the management of the saloon is expecting to develop a user-friendly mobile application with multiple features supporting both customers and administrator."
+        android:textColor="#2c2c2c"
+        android:textSize="17sp" />
 
 </RelativeLayout>

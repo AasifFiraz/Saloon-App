@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#f7f7f7"
+    android:layout_height="match_parent">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="675dp">
-<!--675dp-->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -56,3 +61,4 @@
         android:textSize="20sp" />
 
 </RelativeLayout>
+</ScrollView>

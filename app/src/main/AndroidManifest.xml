@@ -16,7 +16,7 @@
             android:name=".Appointment_Edit_Activity_Admin"
             android:exported="false" />
         <activity
-            android:name=".Appointment_Edit_Activity_Customer"
+            android:name=".Appointment_Edit_Activity"
             android:exported="false" />
         <activity
             android:name=".AdminAppointments"

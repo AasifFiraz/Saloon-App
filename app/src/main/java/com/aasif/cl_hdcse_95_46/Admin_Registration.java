@@ -61,7 +61,7 @@ public class Admin_Registration extends AppCompatActivity {
             }
         });
 
-        // Calling the necessary methods
+        // Initializing validations onCreate
         checkName();
         checkEmail();
         checkPass();

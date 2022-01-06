@@ -28,6 +28,7 @@ public class bill_activity extends AppCompatActivity {
         txtNoOfAppointments = findViewById(R.id.txtNoOfAppointments);
         lstBillAppointments = findViewById(R.id.LstBillAppointments);
 
+
         Intent i  = getIntent();
         String appUserId  = i.getStringExtra("appUser_Id");
 
@@ -41,7 +42,7 @@ public class bill_activity extends AppCompatActivity {
 
 //      Getting the total from the number of bookings
         long tot = dbcon.getAppoinmentTotal(Integer.parseInt(appUserId));
-        txtNoOfAppointments.setText("You Have "+tot+" Appointments");
+        txtNoOfAppointments.setText("The Customer has "+tot+" Appointments");
         txtTotalBillAmount.setText("Your Total\nRs."+tot*800);
 
     }

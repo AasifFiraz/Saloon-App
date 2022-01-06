@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtLoginPassword"
         android:layout_marginLeft="70dp"
-        android:fontFamily="@font/ubunturegular"
+        android:fontFamily="@font/rubikmedium"
         android:text="Don't Have An Account?"
         android:textSize="16dp" />
 
@@ -141,7 +141,7 @@
         android:layout_below="@+id/txtLoginPassword"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/no_account_msg"
-        android:fontFamily="@font/ubunturegular"
+        android:fontFamily="@font/rubikmedium"
         android:text="@string/Register"
         android:textColor="#FFA701"
         android:textSize="16dp" />

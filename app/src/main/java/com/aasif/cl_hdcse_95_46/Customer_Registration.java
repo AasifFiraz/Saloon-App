@@ -35,7 +35,6 @@ public class Customer_Registration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        overridePendingTransition(R.anim.zoomenter, R.anim.zoomenter);
         setContentView(R.layout.activity_customer_registration);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
