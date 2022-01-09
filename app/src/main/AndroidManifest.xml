@@ -13,7 +13,7 @@
             android:name=".bill_activity"
             android:exported="false" />
         <activity
-            android:name=".Appointment_Edit_Activity_Admin"
+            android:name=".Appoinment_Booking_Admin"
             android:exported="false" />
         <activity
             android:name=".Appointment_Edit_Activity"

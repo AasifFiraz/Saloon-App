@@ -92,9 +92,9 @@ public class DBConnector extends SQLiteOpenHelper {
     }
 
 //    Checking for duplicate/ similar admin email
-    public boolean checkDuplicateAdminName(String name) {
+    public boolean checkDuplicateAdminName(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from admins where name = ?", new String[]{name});
+        Cursor cursor = db.rawQuery("select * from admins where email = ?", new String[]{email});
 
         if (cursor.getCount() > 0) {
             return true;
@@ -168,6 +168,26 @@ public class DBConnector extends SQLiteOpenHelper {
         cv.put("date_time", appoinment.getDate());
         cv.put("price", appoinment.getPrice());
         cv.put("user_id", sharedPreferences.getInt("username key", 0));
+        long insert = db.insert("appointments", null, cv);
+
+        if (insert == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+//    The function for the admin to book appointments
+    public boolean addAppointmentAdmin(Appoinment appoinment) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("id",appoinment.getId());
+        cv.put("name", appoinment.getName());
+        cv.put("date_time", appoinment.getDate());
+        cv.put("price", appoinment.getPrice());
+        cv.put("user_id", 0);
         long insert = db.insert("appointments", null, cv);
 
         if (insert == -1) {

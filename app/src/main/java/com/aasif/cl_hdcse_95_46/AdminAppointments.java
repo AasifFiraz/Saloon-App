@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class AdminAppointments extends AppCompatActivity {
     ListView lvAppointments;
     TextView txtNoAppointment;
-    Button btnEditAppointment, btnDeleteAppointment, btnCalBill;
+    Button btnEditAppointment, btnDeleteAppointment, btnCalBill, btnMakeAppointmentAdmin;
     ViewGroup viewGroup;
 
     @Override
@@ -37,9 +37,20 @@ public class AdminAppointments extends AppCompatActivity {
         lvAppointments = findViewById(R.id.lstAllAppointments);
         txtNoAppointment = findViewById(R.id.txtNoAppointmentMessageAdmin);
         viewGroup = findViewById(R.id.content);
+        btnMakeAppointmentAdmin = findViewById(R.id.btnMakeAppoinmentAdmin);
 
         DBConnector dbcon = new DBConnector(this);
         showAppointmentList(dbcon);
+
+        btnMakeAppointmentAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent makeAppoin = new Intent(AdminAppointments.this,Appoinment_Booking_Admin.class);
+                startActivity(makeAppoin);
+
+            }
+        });
 
         lvAppointments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
