@@ -92,7 +92,9 @@ public class Appoinment_Booking extends AppCompatActivity {
                         btnSelectedTime.setEnabled(true);
                     }
                 }, year, month, day);
-                datedialog.getDatePicker().setMinDate(System.currentTimeMillis() + 24 * 60 * 60 * 1000 + 24 * 60 * 60 * 1000);
+                datedialog.getDatePicker().setMinDate(System.currentTimeMillis()
+//                      Setting the picker date 2 days after the current date
+                        + 24 * 60 * 60 * 1000 + 24 * 60 * 60 * 1000);
 
                 datedialog.getDatePicker().setSpinnersShown(true);
                 datedialog.show();

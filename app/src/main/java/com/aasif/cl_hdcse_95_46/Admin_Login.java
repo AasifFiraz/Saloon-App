@@ -85,7 +85,7 @@ public class Admin_Login extends AppCompatActivity {
                         Intent MainScreen = new Intent(getApplicationContext(), AdminAppointments.class);
                         startActivity(MainScreen);
                     }else{
-                        Toast.makeText(getApplicationContext(), "Incorrect Username or Password !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Incorrect Email or Password !", Toast.LENGTH_LONG).show();
                     }
                 }
 

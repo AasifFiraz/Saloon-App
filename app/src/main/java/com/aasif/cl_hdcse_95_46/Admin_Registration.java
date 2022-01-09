@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -61,7 +61,7 @@ public class Admin_Registration extends AppCompatActivity {
             }
         });
 
-        // Initializing validations onCreate
+// Initializing validations onCreate
         checkName();
         checkEmail();
         checkPass();
@@ -83,11 +83,11 @@ public class Admin_Registration extends AppCompatActivity {
                 } else {
 
                     Admins admins;
-                    String name = EdtRegName.getText().toString();
+                    String email = EdtRegEmail.getText().toString();
                     dbcon = new DBConnector(Admin_Registration.this);
 
                     try {
-                        Boolean checkDuplicateAdminName = dbcon.checkDuplicateAdminName(name);
+                        Boolean checkDuplicateAdminName = dbcon.checkDuplicateAdminName(email);
 
                         if (checkDuplicateAdminName == true) {
                             Snackbar.make(RlRegisterAdmin, "Admin Email Already Exists !\nCreate new Account with different email if you don't have one.", Snackbar.LENGTH_LONG)

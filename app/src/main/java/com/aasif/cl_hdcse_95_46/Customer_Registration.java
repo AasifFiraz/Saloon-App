@@ -224,7 +224,7 @@ public class Customer_Registration extends AppCompatActivity {
                     }
 
                 } else {
-                    //When value is equal to characer
+                    //When value is equal to character
                     //Hides the error Message
                     txtRegName.setError(null);
                 }
